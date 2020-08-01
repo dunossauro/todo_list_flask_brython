@@ -1,0 +1,65 @@
+:root {
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --background-color: #222225;
+    --font-color: #e8e9ed;
+    --invert-font-color: #222225
+    --invert-font-color: #222225;
+    --primary-color: #62c4ff;
+    --secondary-color: #a3abba;
+    --tertiary-color: #a3abba;
+    --error-color: #ff3c74;
+    --progress-bar-background: #3f3f44;
+    --progress-bar-fill: #62c4ff;
+    --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+      serif;
+    --input-style: solid;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 5px 5px;
+  grid-template-areas: "header header header"
+                       ". create-todo ."
+                       "todo doing done"
+                       "footer footer footer";
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 5px;
+}
+
+.buttons button {
+  margin: 5px;
+}
+
+header {
+  grid-area: header;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.create-todo {
+  grid-area: create-todo;
+}
+
+.todo {
+  grid-area: todo;
+
+}
+
+.doing {
+  grid-area: doing;
+}
+
+.done {
+  grid-area: done;
+}
