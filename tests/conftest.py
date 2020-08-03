@@ -1,8 +1,27 @@
+from random import choice
 from pytest import fixture
 from app import create_app
-from factory import Factory, Faker
-from app.models import Todo
+from factory import Faker, Factory
+from app.model import Todo
+from faker.providers import BaseProvider
 
+
+class TaksProvider(BaseProvider):
+    def todo_state(self):
+        return choice(['todo', 'doing', 'done'])
+
+
+Faker.add_provider(TaksProvider)
+
+schema = {
+    "type": "array",
+    'properties': {
+        'name': {'type': 'string'},
+        'description': {'type': 'string'},
+        'urgent': {'type': 'boolean'},
+        'state': {'type': 'string'},
+    }
+}
 
 class TodoFactory(Factory):
     class Meta:
@@ -11,6 +30,7 @@ class TodoFactory(Factory):
     name = Faker('sentence', nb_words=4)
     description = Faker('sentence', nb_words=4)
     urgent = Faker('boolean')
+    state = Faker('todo_state')
 
 
 @fixture
@@ -30,4 +50,9 @@ def client():
 
 @fixture(scope='function')
 def tasks():
-    ...
+    return lambda: TodoFactory.build_batch(5)
+
+
+@fixture(scope='function')
+def task_schema():
+    return schema

@@ -5,7 +5,7 @@ from .model import Todo
 ma = Marshmallow()
 
 
-class UserSchema(ma.SQLAlchemyAutoSchema):
+class TodoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Todo
         load_instance = True
