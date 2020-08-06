@@ -9,8 +9,9 @@ class TodoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Todo
         load_instance = True
-        fields = ('name', 'state', 'description', 'urgent')
+        fields = ('name', 'state', 'description', 'urgent', 'id')
 
+    id = fields.Integer(required=True)
     name = fields.String(required=True)
     description = fields.String(required=True)
     urgent = fields.Boolean(required=True)
