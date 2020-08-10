@@ -3,90 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>TODO Page</title>
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
-    <link rel="stylesheet" href={{url_for('static', filename='css/grid.css')}}/>
-    <script type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js">
-    </script>
-    <script type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.min.js">
-    </script>
-    <script type="text/python"
-      src={{url_for('static', filename='scripts/todo.py')}}>
-    </script>
+    {% include 'imports.html' %}
   </head>
   <body onload="brython()" class="terminal">
     <div class="grid-container">
-      <header>
-        <div class="terminal-nav">
-          <div class="terminal-logo">
-            <div class="logo terminal-prompt">
-              <a href="#" class="no-style">Olaaaaaaaaaaaaar</a>
-            </div>
-          </div>
-          <nav class="terminal-menu">
-            <ul>
-              <li>
-                <a href="#">husduhudhs</a>
-              </li>
-              <li>
-                <a href="#">suhaushausha</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-        <div class="create-todo">
-          <fieldset>
-            <legend>Create todo</legend>
-            <form action="index.html" method="post">
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" name="name" value="">
-              </div>
-              <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <input type="text" name="desc" value="">
-              </div>
-              <div class="form-group">
-                <label for="urgent">Urgente:</label>
-                <input type="checkbox" name="urgent" value="">
-              </div>
-              <div class="form-group">
-                <input id='submit' class="btn btn-primary btn-block" type="button" name="" value="Enviar!">
-              </div>
-
-            </form>
-          </fieldset>
-        </div>
-        <div class="todo">
-          <fieldset>
-            <legend>TODO</legend>
-            <div class="terminal-timeline todo">
-
-            </div>
-          </fieldset>
-        </div>
-        <div class="doing">
-          <fieldset>
-            <legend>Fazendo</legend>
-            <div class="terminal-timeline doing">
-
-            </div>
-          </fieldset>
-        </div>
-        <div class="done">
-          <fieldset>
-            <legend>Pronto</legend>
-            <div class="terminal-timeline done">
-
-            </div>
-          </fieldset>
-        </div>
+      {% include 'header.html' %}
+      {% include 'comp_create.html'%}
+      {% include 'comp_todo.html'%}
+      {% include 'comp_doing.html'%}
+      {% include 'comp_done.html'%}
       </main>
-      <footer>
-        Tchau, esse é o nosso footer
-      </footer>
+      {% include 'footer.html' %}
     </div>
   </body>
 </html>
