@@ -1,7 +1,7 @@
 from random import choice
 from pytest import fixture
 from app import create_app
-from factory import Faker, Factory
+from factory import Faker, Factory, Sequence
 from app.model import Todo
 from faker.providers import BaseProvider
 
@@ -16,17 +16,20 @@ Faker.add_provider(TaksProvider)
 schema = {
     "type": "array",
     'properties': {
+        'id': {'type': 'integer'},
         'name': {'type': 'string'},
         'description': {'type': 'string'},
         'urgent': {'type': 'boolean'},
         'state': {'type': 'string'},
-    }
+    },
 }
+
 
 class TodoFactory(Factory):
     class Meta:
         model = Todo
 
+    id = Sequence(lambda n: n)
     name = Faker('sentence', nb_words=4)
     description = Faker('sentence', nb_words=4)
     urgent = Faker('boolean')
@@ -39,18 +42,18 @@ def client():
     app_context = app.test_request_context()
     app_context.push()
     client = app.test_client()
-
-    # ------------------- Antes do teste ^
-
-    yield client  # ------------- Vai ser passado para o teste
-
-    # ------------- O que vai acontecer depois do teste V
+    yield client
     app_context.pop()
 
 
 @fixture(scope='function')
 def tasks():
-    return lambda: TodoFactory.build_batch(5)
+    return TodoFactory.build_batch(5)
+
+
+@fixture(scope='function')
+def filtered_tasks():
+    return TodoFactory()
 
 
 @fixture(scope='function')

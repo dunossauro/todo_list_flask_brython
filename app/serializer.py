@@ -11,7 +11,7 @@ class TodoSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         fields = ('name', 'state', 'description', 'urgent', 'id')
 
-    id = fields.Integer(required=True)
+    id = fields.Integer()
     name = fields.String(required=True)
     description = fields.String(required=True)
     urgent = fields.Boolean(required=True)

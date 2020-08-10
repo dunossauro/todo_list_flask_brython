@@ -9,8 +9,22 @@ api = Blueprint('api', __name__)
 @api.route('/tasks', methods=['GET'])
 def tasks():
     ts = TodoSchema(many=True)
-    query_result = Todo.query.all()
+    query_result = Todo.query.filter(Todo.state != 'canceled').all()
     return jsonify(ts.dump(query_result)), 200
+
+
+@api.route('/change-state/<int:_id>/<new_state>', methods=['PATCH'])
+def change_task_state(_id, new_state):
+    ts = TodoSchema()
+    states = ['todo', 'doing', 'done', 'canceled']
+
+    task = Todo.query.filter_by(id=_id).one()
+
+    if new_state in states:
+        task.state = new_state
+        current_app.db.session.commit()
+
+    return jsonify(ts.dump(task))
 
 
 @api.route('/task-register', methods=['POST'])

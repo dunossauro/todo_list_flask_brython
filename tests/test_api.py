@@ -1,5 +1,4 @@
 from flask import url_for
-from app.model import Todo
 from jsonschema import validate
 
 
@@ -35,8 +34,20 @@ def test_task_register_com_json_vazio_deve_retonar_os_campos_faltantes(
 def test_tasks_deve_retornar_um_grupo_de_tasks_validas(
     client, mocker, tasks, task_schema
 ):
-    m = mocker.patch('app.api.Todo',)
-    m.query.all = tasks
+    m = mocker.patch('app.api.Todo')
+    m.query.all.return_value = tasks
     response = client.get(url_for('api.tasks'))
 
     assert validate(response.json, schema=task_schema) is None
+
+
+# def test_change_task_state_deve_retornar_a_task_com_estado_alterado(
+#     client, mocker, filtered_tasks
+# ):
+#     m = mocker.patch('app.api.Todo')
+#     m.query.filter_by.first.return_value = filtered_tasks
+#     data = ...
+#     response = client.patch(
+#         url_for('api.change_task_state', json=data)
+#     )
+#     assert False
