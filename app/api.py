@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, current_app
+from flask_login import current_user
 from marshmallow import ValidationError
 from .serializer import TodoSchema
 from .model import Todo
@@ -9,7 +10,10 @@ api = Blueprint('api', __name__)
 @api.route('/tasks', methods=['GET'])
 def tasks():
     ts = TodoSchema(many=True)
-    query_result = Todo.query.filter(Todo.state != 'canceled').all()
+    query_result = Todo.query.filter(
+        Todo.state != 'canceled',
+        Todo.user == current_user
+    ).all()
     return jsonify(ts.dump(query_result)), 200
 
 

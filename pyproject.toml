@@ -12,6 +12,7 @@ flask-marshmallow = "^0.13.0"
 marshmallow-sqlalchemy = "^0.23.1"
 flask-migrate = "^2.5.3"
 brython = "^3.8.9"
+flask-login = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0.1"

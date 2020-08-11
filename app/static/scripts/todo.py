@@ -186,6 +186,3 @@ def register_task(req):
     document.select_one(
         'div.todo div.terminal-timeline'
     ) <= html_todo(json_response)
-
-
-ajax.get('/tasks', oncomplete=get_todos)

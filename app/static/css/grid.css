@@ -63,3 +63,7 @@ footer {
 .done {
   grid-area: done;
 }
+
+.btn-header {
+  border: 0px;
+}

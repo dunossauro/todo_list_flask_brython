@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title>TODO Page</title>
     {% include 'imports.html' %}
+    <script type="text/python">
+      from browser import ajax
+      ajax.get('/tasks', oncomplete=get_todos)
+    </script>
   </head>
   <body onload="brython()" class="terminal">
     <div class="grid-container">
