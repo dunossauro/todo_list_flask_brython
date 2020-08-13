@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Login</title>
     {% include 'imports.html' %}
+    <script type="text/python"
+      src={{url_for('static', filename='scripts/login.py')}}>
+    </script>
   </head>
   <body onload="brython()" class="terminal">
     <div class="grid-container">
@@ -11,9 +14,6 @@
       <div class="create-todo">
         <fieldset>
           <legend>login</legend>
-          <div class="terminal-alert terminal-alert-error">
-            Login não effetuado. Senha ou email inválidos.
-          </div>
           <form class="" action="#" method="post">
             <div class="form-group">
               <label for="email">Email:</label>
