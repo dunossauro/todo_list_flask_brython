@@ -36,6 +36,16 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] Integração com flask admin
 
 
+## Testes de Integração
+- [ ] Page objects
+  - [ ] Login
+  - [ ] Cadastro
+  - [-] Todo
+- [ ] Behave features
+  - [ ] Login
+  - [ ] Cadastro
+  - [-] Todo
+
 ## Ops
 - [ ] Docker
 - [ ] CI
