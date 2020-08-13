@@ -25,3 +25,17 @@ class Todo(PageObject):
 
     def get_tasks(self):
         return [task(element) for element in self.tasks]
+
+
+class CreateUser(PageObject):
+    name = PageElement(name='nome')
+    email = PageElement(name='email')
+    email_label = PageElement(css='.form-group:nth-child(2) > label')
+    password = PageElement(name='senha')
+    submit = PageElement(css='.btn')
+
+    def create_user(self, data_json: dict) -> None:
+        self.name = data_json.get('nome')
+        self.email = data_json.get('email')
+        self.password = data_json.get('senha')
+        self.submit.click()
