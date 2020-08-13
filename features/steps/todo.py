@@ -1,7 +1,6 @@
 from json import loads
 
 from behave import given, then, when
-
 from features.page_objects.pages import CreateTodo, Todo
 
 
@@ -28,6 +27,8 @@ def task_register(context):
 def check_task_on_stack(context, stack):
     todos = Todo(context.driver)
     tasks = todos.get_tasks()
+
+    # TODO: Arrumar essa validação
     for task in tasks:
         if task.name == context.cenario_json['nome']:
             break
