@@ -1,5 +1,8 @@
-# todo_list_flask_brython
-TODO list implementado com python fullstack
+# Todo list
+
+Exemplo de um projeto simples de TODO list usando flask + Brython
+
+A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 
 
 # Tarefas
@@ -21,7 +24,7 @@ TODO list implementado com python fullstack
 - [ ] Criar view de cadastro
   - [x] Criar rotas
   - [x] Criar o html
-  - [ ] Criar eventos de click
+  - [-] Criar eventos de click
   - [ ] Inserir no template o erro do login
 - [ ] Ajustar condições do Header
 - [ ] Criar Footer
@@ -31,6 +34,11 @@ TODO list implementado com python fullstack
 - [x] Criar models de usuários
 - [x] Integração com flask login
 - [ ] Integração com flask admin
+
+
+## Ops
+- [] CI
+- [] CD
 
 
 ## Brython issues
