@@ -28,6 +28,7 @@ class User(UserMixin, db.Model):
         except IntegrityError:
             return False
 
+
 class Todo(db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)
     name = db.Column(db.String(80), nullable=False)
