@@ -1,6 +1,6 @@
 from flask_login import current_user
 from flask_marshmallow import Marshmallow
-from marshmallow import fields, post_load, validate
+from marshmallow import fields, post_load
 
 from .model import Todo
 
