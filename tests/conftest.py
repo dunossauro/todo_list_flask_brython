@@ -1,11 +1,10 @@
 from random import choice
 
+from app import create_app
+from app.model import Todo
 from factory import Factory, Faker, Sequence
 from faker.providers import BaseProvider
 from pytest import fixture
-
-from app import create_app
-from app.model import Todo
 
 
 class TaksProvider(BaseProvider):

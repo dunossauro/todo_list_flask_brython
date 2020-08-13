@@ -1,5 +1,6 @@
-from flask import url_for
 from jsonschema import validate
+
+from flask import url_for
 
 
 def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(
