@@ -24,7 +24,7 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] Criar view de cadastro
   - [x] Criar rotas
   - [x] Criar o html
-  - [-] Criar eventos de click
+  - [x] Criar eventos de click
   - [ ] Inserir no template o erro do login
 - [ ] Ajustar condições do Header
 - [ ] Criar Footer
