@@ -37,8 +37,14 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 
 
 ## Ops
-- [] CI
-- [] CD
+- [ ] Docker
+- [ ] CI
+- [ ] CD
+
+## Outros
+- [ ] Gunicorn
+- [ ] Postgress
+- [ ] Compose
 
 
 ## Brython issues
