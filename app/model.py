@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import UserMixin
+from sqlalchemy.exc import IntegrityError
 
 
 db = SQLAlchemy()
@@ -10,14 +11,22 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)
     name = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
-    email = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(30), nullable=False, unique=True)
 
-    def login(self, user, password):
-        user = self.query.filter_by(email=user).first()
+    def login(self, email, password):
+        user = self.query.filter_by(email=email).first()
         if user and user.password == password:
             return user
         return None
 
+    def register(self, name, email, password):
+        try:
+            user = User(name=name, email=email, password=password)
+            db.session.add(user)
+            db.session.commit()
+            return user
+        except IntegrityError:
+            return False
 
 class Todo(db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)

@@ -19,9 +19,12 @@ TODO list implementado com python fullstack
   - [x] Criar eventos de click
   - [ ] Inserir no template o erro do login
 - [ ] Criar view de cadastro
-  - [ ] Criar o html
+  - [x] Criar rotas
+  - [x] Criar o html
   - [ ] Criar eventos de click
   - [ ] Inserir no template o erro do login
+- [ ] Ajustar condições do Header
+- [ ] Criar Footer
 
 
 ## Login/Admin
