@@ -1,4 +1,4 @@
-from page_objects import PageObject, PageElement, MultiPageElement
+from page_objects import MultiPageElement, PageElement, PageObject
 
 
 class task:

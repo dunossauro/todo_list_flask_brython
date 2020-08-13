@@ -1,5 +1,6 @@
 from functools import partial
-from browser import html, document, ajax, bind
+
+from browser import ajax, bind, document, html
 from javascript import JSON
 
 

@@ -1,5 +1,5 @@
-from selenium.webdriver import Firefox
 from ipdb import spost_mortem
+from selenium.webdriver import Firefox
 
 
 def before_all(context):

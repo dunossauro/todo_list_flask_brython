@@ -1,8 +1,9 @@
-from flask import Blueprint, jsonify, request, current_app
+from flask import Blueprint, current_app, jsonify, request
 from flask_login import current_user
 from marshmallow import ValidationError
-from .serializer import TodoSchema
+
 from .model import Todo
+from .serializer import TodoSchema
 
 api = Blueprint('api', __name__)
 

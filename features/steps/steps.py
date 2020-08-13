@@ -1,5 +1,7 @@
-from behave import given, when, then
 from json import loads
+
+from behave import given, then, when
+
 from features.page_objects.pages import CreateTodo, Todo
 
 

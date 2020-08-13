@@ -1,13 +1,7 @@
-from flask import (
-    Blueprint,
-    render_template,
-    request,
-    redirect,
-    url_for,
-)
-from flask_login import login_user, login_required, logout_user
-from .model import User
+from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required, login_user, logout_user
 
+from .model import User
 
 front = Blueprint('front', __name__)
 

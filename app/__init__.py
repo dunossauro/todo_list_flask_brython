@@ -16,7 +16,8 @@ def create_app():
     from .front import front
     app.register_blueprint(front)
 
-    from .model import configure as model_conf, User
+    from .model import User
+    from .model import configure as model_conf
     model_conf(app)
 
     from .serializer import configure as serial_conf

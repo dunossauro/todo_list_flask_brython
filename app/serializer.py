@@ -1,6 +1,7 @@
-from flask_marshmallow import Marshmallow
 from flask_login import current_user
-from marshmallow import fields, validate, post_load
+from flask_marshmallow import Marshmallow
+from marshmallow import fields, post_load, validate
+
 from .model import Todo
 
 ma = Marshmallow()
