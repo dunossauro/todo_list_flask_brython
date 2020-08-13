@@ -98,16 +98,14 @@ def html_card(todo, do_action, cancel_action=None):
     buts = html.DIV(Class='buttons')
 
     do_button = html.BUTTON(
-        do_action['text'],
-        Class='btn btn-primary btn-ghost do'
+        do_action['text'], Class='btn btn-primary btn-ghost do'
     )
     buts <= do_button
     do_button.bind('click', do_action['action'])
 
     if cancel_action:
         cancel_button = html.BUTTON(
-            cancel_action['text'],
-            Class='btn btn-error btn-ghost cancel'
+            cancel_action['text'], Class='btn btn-error btn-ghost cancel'
         )
         cancel_button.bind('click', cancel_action['action'])
         buts <= cancel_button
@@ -129,10 +127,7 @@ html_doing = partial(
     cancel_action={'text': 'Voltar!', 'action': back},
 )
 
-html_done = partial(
-    html_card,
-    do_action={'text': 'Refazer!', 'action': redo},
-)
+html_done = partial(html_card, do_action={'text': 'Refazer!', 'action': redo})
 
 
 def change_state(task_id, new_state):
@@ -140,20 +135,6 @@ def change_state(task_id, new_state):
     req.open('PATCH', f'/change-state/{task_id}/{new_state}', True)
     req.set_header('content-type', 'application/json')
     req.send()
-
-
-def get_todos(req):
-    todo_states = {
-        'todo': html_todo,
-        'doing': html_doing,
-        'done': html_done
-    }
-    json = JSON.parse(req.text)
-    for todo in json:
-        div = document.select_one(
-            f'div.{todo["state"]} div.terminal-timeline'
-        )
-        div <= todo_states[todo['state']](todo)
 
 
 @bind('#submit', 'click')
@@ -183,6 +164,9 @@ def request(url, json, bind, method='POST'):
 
 def register_task(req):
     json_response = JSON.parse(req.text)
-    document.select_one(
-        'div.todo div.terminal-timeline'
-    ) <= html_todo(json_response)
+    document.select_one('div.todo div.terminal-timeline') <= html_todo(
+        json_response
+    )
+
+
+ajax.get('/tasks', oncomplete=get_todos)
