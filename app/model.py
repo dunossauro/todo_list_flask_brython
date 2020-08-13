@@ -35,5 +35,5 @@ class Todo(db.Model):
 
 def configure(app):
     db.init_app(app)
-    migrate = Migrate(app, db)
+    Migrate(app, db)
     app.db = db

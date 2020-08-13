@@ -1,4 +1,10 @@
-from flask import Blueprint, render_template, request, current_app, redirect
+from flask import (
+    Blueprint,
+    render_template,
+    request,
+    redirect,
+    url_for,
+)
 from flask_login import login_user, login_required, logout_user
 from .model import User
 
@@ -19,20 +25,17 @@ def login():
 
 @front.route('/login', methods=['POST'])
 def login_post():
-    login_data = request.form
-
-    login_data.get('senha', '')
     user = User().login(
-        login_data.get('email', ''),
-        login_data.get('senha', '')
+        request.form.get('email', ''), request.form.get('senha', '')
     )
     if user:
         login_user(user)
         return redirect('/')
-    return redirect('/')
+
+    return redirect(url_for('front.login'))
 
 
 @front.route('/logout', methods=['POST'])
 def logout():
     logout_user()
-    return redirect('/')
+    return redirect(url_for('.login'))

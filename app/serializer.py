@@ -1,4 +1,5 @@
 from flask_marshmallow import Marshmallow
+from flask_login import current_user
 from marshmallow import fields, validate, post_load
 from .model import Todo
 
@@ -15,7 +16,6 @@ class TodoSchema(ma.SQLAlchemyAutoSchema):
     @post_load
     def make_todo(self, data, **kwargs):
         return Todo(user_id=current_user.id, **data)
-
 
 
 def configure(app):
