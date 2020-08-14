@@ -38,7 +38,7 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 
 ## Testes de Integração
 - [ ] Page objects
-  - [ ] Login
+  - [x] Login
   - [ ] Cadastro
   - [-] Todo
 - [ ] Behave features
