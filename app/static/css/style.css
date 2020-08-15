@@ -1,0 +1,42 @@
+:root {
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --background-color: #222225;
+    --font-color: #e8e9ed;
+    --invert-font-color: #222225
+    --invert-font-color: #222225;
+    --primary-color: #62c4ff;
+    --secondary-color: #a3abba;
+    --tertiary-color: #a3abba;
+    --error-color: #ff3c74;
+    --progress-bar-background: #3f3f44;
+    --progress-bar-fill: #62c4ff;
+    --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+      serif;
+    --input-style: solid;
+}
+
+@media (max-height: 600px) {
+  .result{display: none;}
+}
+
+@media (max-width: 480px) {
+  .terminal-menu {
+    display: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 5px;
+}
+
+.buttons button {
+  margin: 5px;
+}
+
+.btn-header {
+  border: 0px;
+}
