@@ -150,10 +150,11 @@ def task_register(evt):
         'urgent': urgent.checked,
         'state': 'todo',
     }
-    request('/task-register', json=json, bind=register_task)
 
     name.value = ''
     desc.value = ''
+
+    request('/task-register', json=json, bind=register_task)
 
 
 def request(url, json, bind, method='POST'):
