@@ -10,6 +10,4 @@ def table_to_task(row):
 def check_stack(tasks, table):
     tasks = [task(x.name, x.desc, '') for x in tasks]
 
-    return list(
-        map(lambda task: task in tasks, table)
-    )
+    return list(map(lambda task: task in tasks, table))

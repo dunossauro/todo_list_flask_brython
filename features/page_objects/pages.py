@@ -54,4 +54,3 @@ class CreateUser(PageObject):
         self.email = data_json.get('email')
         self.password = data_json.get('senha')
         self.submit.click()
-        

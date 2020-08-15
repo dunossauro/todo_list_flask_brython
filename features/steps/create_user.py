@@ -13,10 +13,7 @@ def user_register(context):
 
 @then('deverá ser redirecionado para a pagina de "{page}"')
 def check_redirect(context, page):
-    assertion_options = {
-        "todo": "/",
-        "register": "register"
-    }
+    assertion_options = {"todo": "/", "register": "register"}
     assert assertion_options.get(page) in context.driver.current_url
 
 

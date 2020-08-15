@@ -12,8 +12,7 @@ api = Blueprint('api', __name__)
 def tasks():
     ts = TodoSchema(many=True)
     query_result = Todo.query.filter(
-        Todo.state != 'canceled',
-        Todo.user == current_user
+        Todo.state != 'canceled', Todo.user == current_user
     ).all()
     return jsonify(ts.dump(query_result)), 200
 
