@@ -1,3 +1,4 @@
 app/static/js/* linguist-vendored
 app/static/css/normalize.css linguist-vendored
 app/static/css/terminal.min.css linguist-vendored
+migrations/* linguist-vendored
