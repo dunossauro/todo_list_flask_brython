@@ -1,9 +1,16 @@
 from ipdb import spost_mortem
-from selenium.webdriver import Firefox
+from selenium.webdriver import Chrome, Firefox, Safari
 
 
 def before_all(context):
-    context.driver = Firefox()
+    BROWSERS_CAPABILITIES = {
+        'chrome': Chrome,
+        'firefox': Firefox,
+        'safari': Safari
+    }
+    context.driver = BROWSERS_CAPABILITIES.get(
+        context.config.userdata.get('browser').lower()
+    )()
     context.base_url = context.config.userdata.get('base_url')
 
 
