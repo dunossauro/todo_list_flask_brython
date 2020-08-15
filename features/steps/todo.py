@@ -6,19 +6,21 @@ from features.page_objects.pages import CreateTodo, Todo
 
 @given('que esteja na página de "{page}"')
 def natigate_to_page(context, page):
-    context.driver.get(context.base_url + page)
+    pages = {
+        'todo': ''
+    }
+    context.driver.get(context.base_url + pages[page])
 
 
 @when('registrar tarefa')
 def task_register(context):
     page = CreateTodo(context.driver)
-    context.cenario_json = loads(context.text)
 
-    page.name = context.cenario_json['nome']
-    page.description = context.cenario_json['description']
-
-    if 'urgent' in context.cenario_json:
-        page.urgent.click()
+    for row in context.table:
+        page.name = row['nome']
+        page.description = row['descrição']
+        if 'urgent' in row:
+            page.urgent.click()
 
     page.submit.click()
 

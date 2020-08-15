@@ -1,4 +1,7 @@
+import selenium.webdriver.support.expected_conditions as EC
 from page_objects import MultiPageElement, PageElement, PageObject
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class task:
@@ -27,6 +30,17 @@ class Todo(PageObject):
         return [task(element) for element in self.tasks]
 
 
+class Login(PageObject):
+    email = PageElement(name='email')
+    password = PageElement(name='senha')
+    submit = PageElement(css='input[value="Login"]')
+
+    def wait_form(self, name='email'):
+        WebDriverWait(self.w, 20).until(
+            EC.element_to_be_clickable((By.NAME, name))
+        )
+
+
 class CreateUser(PageObject):
     name = PageElement(name='nome')
     email = PageElement(name='email')
@@ -39,3 +53,4 @@ class CreateUser(PageObject):
         self.email = data_json.get('email')
         self.password = data_json.get('senha')
         self.submit.click()
+        
