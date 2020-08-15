@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: Registrar usuários
+Funcionalidade: Criação de conta
 
   Cenário: A aplicação deve redirecionar para a página de TODO ao registrar um usuário com sucesso
     Dado que esteja na página de "register"
