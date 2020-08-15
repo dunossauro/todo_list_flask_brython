@@ -4,8 +4,15 @@ from selenium.webdriver import Firefox
 
 
 def before_all(context):
-    context.driver = Firefox()
     context.base_url = context.config.userdata.get('base_url')
+
+
+def before_feature(context, feature):
+    context.driver = Firefox()
+
+
+def after_feature(context, feature):
+    context.driver.quit()
 
 
 def before_scenario(context, scenario):
