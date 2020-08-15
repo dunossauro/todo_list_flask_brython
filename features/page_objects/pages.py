@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class task:
+class Task:
     def __init__(self, driver):
         self.driver = driver
         self.load()
@@ -14,6 +14,7 @@ class task:
         self.id = header[1]
         self.name = header[0].strip()
         self.desc = self.driver.find_element_by_tag_name('div').text
+        self.urgent = ''
 
 
 class CreateTodo(PageObject):
@@ -27,7 +28,7 @@ class Todo(PageObject):
     tasks = MultiPageElement(css='.terminal-timeline.todo .terminal-card')
 
     def get_tasks(self):
-        return [task(element) for element in self.tasks]
+        return [Task(element) for element in self.tasks]
 
 
 class Login(PageObject):

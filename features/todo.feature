@@ -9,3 +9,16 @@ Funcionalidade: Registrar tarefas
       | nome   | descrição |
       | Dormir | Pq é bom  |
     Então a tarefa deve estar na pilha de "todo"
+      | nome   | descrição |
+      | Dormir | Pq é bom  |
+
+  Cenário: Carregamento automático das TODOS
+    Quando registrar as tarefas
+      | nome           | descrição             | urgente |
+      | Liga para Beto | Telefone +15 51515151 | False   |
+      | ir no mercado  | Promoção no mercado x | False   |
+    E atualizar a página
+    Então as tarefas devem estar na pilha de "todo"
+      | nome           | descrição             |
+      | Liga para Beto | Telefone +15 51515151 |
+      | ir no mercado  | Promoção no mercado x |

@@ -152,6 +152,9 @@ def task_register(evt):
     }
     request('/task-register', json=json, bind=register_task)
 
+    name.value = ''
+    desc.value = ''
+
 
 def request(url, json, bind, method='POST'):
     """Send json data to backend."""
@@ -168,6 +171,14 @@ def register_task(req):
     document.select_one('div.todo div.terminal-timeline') <= html_todo(
         json_response
     )
+
+
+def get_todos(req):
+    todo_states = {'todo': html_todo, 'doing': html_doing, 'done': html_done}
+    json = JSON.parse(req.text)
+    for todo in json:
+        div = document.select_one(f'div.{todo["state"]} div.terminal-timeline')
+        div <= todo_states[todo['state']](todo)
 
 
 ajax.get('/tasks', oncomplete=get_todos)
