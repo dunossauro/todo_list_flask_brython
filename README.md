@@ -37,14 +37,14 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 
 
 ## Testes de Integração
-- [ ] Page objects
+- [x] Page objects
   - [x] Login
-  - [-] Cadastro
-  - [-] Todo
+  - [x] Cadastro
+  - [x] Todo
 - [ ] Behave features
   - [ ] Login
-  - [-] Cadastro
-  - [-] Todo
+  - [x] Cadastro
+  - [x] Todo
 
 ## Ops
 - [ ] Docker
