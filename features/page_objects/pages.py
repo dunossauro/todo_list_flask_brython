@@ -39,3 +39,18 @@ class Login(PageObject):
         WebDriverWait(self.w, 20).until(
             EC.element_to_be_clickable((By.NAME, name))
         )
+
+
+class CreateUser(PageObject):
+    name = PageElement(name='nome')
+    email = PageElement(name='email')
+    email_label = PageElement(css='.form-group:nth-child(2) > label')
+    password = PageElement(name='senha')
+    submit = PageElement(css='.btn')
+
+    def create_user(self, data_json: dict) -> None:
+        self.name = data_json.get('nome')
+        self.email = data_json.get('email')
+        self.password = data_json.get('senha')
+        self.submit.click()
+        
