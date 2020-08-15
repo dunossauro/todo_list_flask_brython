@@ -14,22 +14,11 @@ def natigate_to_page(context, page):
 @when('registrar tarefa')
 @when('registrar as tarefas')
 def task_register(context):
-    """
-    Registra uma ou mais tarefas usando a tabela do Gherking.
-
-    TODO: Melhorar tempo desse teste, antes do request ser feito
-        Os dados são preenchidos novamente, enviando as vezes
-        somente um registro (com todos da tabela) #7
-    """
+    """Registra uma ou mais tarefas usando a tabela do Gherking."""
     page = CreateTodo(context.driver)
 
     for row in context.table:
-        page.name = row['nome']
-        page.description = row['descrição']
-        if 'urgent' in row:
-            page.urgent.click()
-
-        page.submit.click()
+        page.create_todo(row['nome'], row['descrição'], row.get('urgent', ''))
 
 
 @then('a tarefa deve estar na pilha de "{stack}"')

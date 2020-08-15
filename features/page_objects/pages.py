@@ -4,6 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 
+def be_blank(driver, css):
+    """Espera eleento estar em branco."""
+    WebDriverWait(driver, 20).until(
+        lambda element: driver.find_element_by_css_selector(css).text == ''
+    )
+
+
 class Task:
     def __init__(self, driver):
         self.driver = driver
@@ -22,6 +29,15 @@ class CreateTodo(PageObject):
     description = PageElement(name='desc')
     urgent = PageElement(name='urgent')
     submit = PageElement(id_='submit')
+
+    def create_todo(self, name, description, urgent):
+        be_blank(self.w, 'input[name="name"]')
+        self.name = name
+        self.description = description
+        if urgent:
+            self.urgent.click()
+
+        self.submit.click()
 
 
 class Todo(PageObject):
