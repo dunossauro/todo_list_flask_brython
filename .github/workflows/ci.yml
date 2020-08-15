@@ -40,3 +40,6 @@ jobs:
 
       - name: Black
         run: poetry run black -S -l 79 . --check
+
+      - name: Xenon
+        run: xenon --max-absolute A --max-modules A --max-average A .
