@@ -95,7 +95,7 @@ def html_card(todo, do_action, cancel_action=None):
     """
     div = html.DIV(Class='terminal-card')
     div <= html.HEADER(f'{todo["name"]} #{todo["id"]}')
-    div <= html.DIV(f'Descrição: {todo["description"]}')
+    div <= html.DIV(f'{todo["description"]}')
     buts = html.DIV(Class='buttons')
 
     do_button = html.BUTTON(

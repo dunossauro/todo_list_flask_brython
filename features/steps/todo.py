@@ -24,14 +24,7 @@ def task_register(context):
 @then('a tarefa deve estar na pilha de "{stack}"')
 @then('as tarefas devem estar na pilha de "{stack}"')
 def check_task_on_stack(context, stack):
-    """
-    Checa os registros nas colunas corretas usando a tabela como base.
-
-    #TODO: Os testes que checam os registros inseridos no banco de
-        dados estavam fazendo uma asserção simples.
-        A função foi refatorada mais ainda não exibe os resultados
-        reais nos steps de validação #8
-    """
+    """Checa os registros nas colunas corretas usando a tabela como base."""
     todos = Todo(context.driver)
     tasks = todos.get_tasks()
 
