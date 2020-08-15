@@ -1,5 +1,4 @@
-export FLASK_APP=app
-export FLASK_DEBUG=True
+export FLASK_ENV=testing
 
 flask db upgrade
 flask run

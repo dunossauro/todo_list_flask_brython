@@ -25,6 +25,7 @@ factory_boy = "^2.12.0"
 jsonschema = "^3.2.0"
 behave = "^1.2.6"
 page_objects = "^1.1.0"
+httpx = "^0.14.1"
 
 [build-system]
 requires = ["poetry>=0.12"]
