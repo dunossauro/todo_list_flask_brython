@@ -5,9 +5,16 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 def be_blank(driver, css):
-    """Espera eleento estar em branco."""
+    """Espera elemento estar em branco."""
     WebDriverWait(driver, 20).until(
         lambda element: driver.find_element_by_css_selector(css).text == ''
+    )
+
+
+def wait_task(driver, css):
+    """Aguarda as taks serem carregadas."""
+    WebDriverWait(driver, 20).until(
+        lambda element: driver.find_element_by_css_selector(css)
     )
 
 
@@ -45,6 +52,7 @@ class Todo(PageObject):
     tasks = MultiPageElement(css='.terminal-timeline.todo .terminal-card')
 
     def get_tasks(self):
+        wait_task(self.w, '.terminal-timeline.todo .terminal-card')
         return [Task(element) for element in self.tasks]
 
 
