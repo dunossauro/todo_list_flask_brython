@@ -9,5 +9,5 @@ def read(file):
 setup(
     name='app',
     package=find_packages(),
-    install_requires=read('requirements.txt')
+    install_requires=read('requirements.txt'),
 )
