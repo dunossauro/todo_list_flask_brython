@@ -58,7 +58,7 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 
 ## Outros
 - [ ] Gunicorn
-- [ ] Postgress
+- [ ] Postgres
 - [ ] Compose
 
 
