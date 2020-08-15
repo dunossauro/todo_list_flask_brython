@@ -32,6 +32,7 @@ class CreateTodo(PageObject):
 
     def create_todo(self, name, description, urgent):
         be_blank(self.w, 'input[name="name"]')
+        be_blank(self.w, 'input[name="desc"]')
         self.name = name
         self.description = description
         if urgent:

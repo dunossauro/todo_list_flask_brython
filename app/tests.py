@@ -21,7 +21,7 @@ def remove_all_tasks():
     return 'All todos removed', 200
 
 
-@tests.route('/register-users', methods=['POST'])
+@tests.route('/register-user', methods=['POST'])
 def register_new_user():
     us = UserSchema()
     try:
