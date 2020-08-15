@@ -22,3 +22,13 @@ Funcionalidade: Registrar tarefas
       | nome           | descrição             |
       | Liga para Beto | Telefone +15 51515151 |
       | ir no mercado  | Promoção no mercado x |
+
+  Cenário: Prioridades de tarefas
+      Quando registrar as tarefas
+        | nome           | descrição               | urgente |
+        | Fazer bolo     | não esquecer o fermento | False   |
+        | ir no mercado  | Promoção no mercado x   | True    |
+
+      Então a tarefa deve estar no topo da pilha de "todo"
+        | nome           | descrição             |
+        | ir no mercado  | Promoção no mercado x |
