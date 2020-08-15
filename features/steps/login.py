@@ -26,16 +26,20 @@ def default_login(context):
 @when('logar com credenciais inválidas')
 @when('logar com credenciais válidas')
 def invalid_login(context):
-    page = Login(context.driver)
-    page.wait_form()
-    page.email = 'test@test'
-    page.password = '1234'
-    page.submit.click()
+    context.page = Login(context.driver)
+    context.page.wait_form()
+    context.page.email = 'test@test'
+    context.page.password = '1234'
+    context.page.submit.click()
 
 
 @then('a mensagem de erro deverá ser exibida')
 def invalid_login(context):
-    page = Login(context.driver)
-    page.wait_error_message()
+    context.page.wait_error_message()
 
-    assert page.error.text == context.text
+    assert context.page.error.text == context.text
+
+
+@given('faça logout')
+def logout(context):
+    context.driver.find_element_by_css_selector('.btn-header').click()

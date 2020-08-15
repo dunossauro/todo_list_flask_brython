@@ -79,9 +79,15 @@ class CreateUser(PageObject):
     email_label = PageElement(css='.form-group:nth-child(2) > label')
     password = PageElement(name='senha')
     submit = PageElement(css='.btn')
+    error = PageElement(css='.terminal-alert-error')
 
     def create_user(self, data_json: dict) -> None:
         self.name = data_json.get('nome')
         self.email = data_json.get('email')
         self.password = data_json.get('senha')
         self.submit.click()
+
+    def wait_error_message(self):
+        WebDriverWait(self.w, 20).until(
+            lambda driver: 'terminal-alert-error' in driver.page_source
+        )

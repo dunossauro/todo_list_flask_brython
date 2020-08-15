@@ -6,9 +6,9 @@ from features.page_objects.pages import CreateUser
 
 @when('registrar o usuário')
 def user_register(context):
-    page = CreateUser(context.driver)
+    context.page = CreateUser(context.driver)
     context.cenario_json = loads(context.text)
-    page.create_user(context.cenario_json)
+    context.page.create_user(context.cenario_json)
 
 
 @then('deverá ser redirecionado para a pagina de "{page}"')
@@ -20,5 +20,4 @@ def check_redirect(context, page):
 
 @then('o label do Email deverá ser "{label_message}"')
 def check_email_label(context, label_message):
-    page = CreateUser(context.driver, label_message)
-    assert page.email_label.text == label_message
+    assert context.page.email_label.text == label_message

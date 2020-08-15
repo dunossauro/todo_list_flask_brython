@@ -51,4 +51,4 @@ def register_post():
         login_user(user)
         return redirect('/')
 
-    return render_template('register.html')
+    return render_template('register.html', error=True)

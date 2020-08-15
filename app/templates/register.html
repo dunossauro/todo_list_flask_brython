@@ -14,6 +14,11 @@
       <div class="create-todo">
         <fieldset>
           <legend>Cadastro</legend>
+          {% if error %}
+            <div class="terminal-alert terminal-alert-error">
+              Algo deu errado!
+            </div>
+          {% endif %}
           <form class="" action="#" method="post">
             <div class="form-group">
               <label for="nome">Nome:</label>

@@ -23,7 +23,8 @@ Funcionalidade: Registrar usuários
           "senha": "123"
       }
       """
-    Dado que esteja na página de "register"
+    Dado faça logout
+    E que esteja na página de "register"
     Quando registrar o usuário
       """
       {
@@ -32,7 +33,10 @@ Funcionalidade: Registrar usuários
           "senha": "123"
       }
       """
-    Então deverá ser redirecionado para a pagina de "register"
+    Então a mensagem de erro deverá ser exibida
+      """
+      Algo deu errado!
+      """
 
   Cenário: A aplicação deve alterar o label do Email quando inserido um Email inválido
     Dado que esteja na página de "register"
