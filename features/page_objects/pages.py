@@ -81,10 +81,10 @@ class CreateUser(PageObject):
     submit = PageElement(css='.btn')
     error = PageElement(css='.terminal-alert-error')
 
-    def create_user(self, data_json: dict) -> None:
-        self.name = data_json.get('nome')
-        self.email = data_json.get('email')
-        self.password = data_json.get('senha')
+    def create_user(self, nome, email, senha) -> None:
+        self.name = nome
+        self.email = email
+        self.password = senha
         self.submit.click()
 
     def wait_error_message(self):

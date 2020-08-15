@@ -1,14 +1,14 @@
-from json import loads
-
 from behave import then, when
 from features.page_objects.pages import CreateUser
 
 
-@when('registrar o usuário')
+@when('registrar minha conta')
 def user_register(context):
     context.page = CreateUser(context.driver)
-    context.cenario_json = loads(context.text)
-    context.page.create_user(context.cenario_json)
+    for row in context.table:
+        context.page.create_user(
+            row['nome'], row['email'], row['senha'],
+        )
 
 
 @then('deverá ser redirecionado para a pagina de "{page}"')
