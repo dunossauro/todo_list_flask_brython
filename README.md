@@ -12,9 +12,13 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
   - [ ] Mock da query no banco
   - [x] Serializer para receber o request
   - [x] Adicionar no front para redireciar os cards para coluna correta
-- [ ] Adicionar prioridade nas tasks no front
-- [ ] webcomponent para filtrar issues
+- [x] Adicionar prioridade nas tasks no front
+- [ ] Webcomponent para filtrar issues
+- [ ] Criar widget para editar todos quando clicar no todo
 
+
+## API
+- [ ] Criar patch para editar conteúdo dos todos
 
 ## Views
 - [ ] Criar view de login
@@ -26,7 +30,7 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
   - [x] Criar o html
   - [x] Criar eventos de click
   - [ ] Inserir no template o erro do login
-- [ ] Ajustar CSS do Header
+- [x] Ajustar CSS do Header
 - [ ] Ajustar condições do Header
 - [ ] Criar Footer
 
