@@ -14,6 +14,13 @@ def natigate_to_page(context, page):
 @when('registrar tarefa')
 @when('registrar as tarefas')
 def task_register(context):
+    """
+    Registra uma ou mais tarefas usando a tabela do Gherking.
+
+    TODO: Melhorar tempo desse teste, antes do request ser feito
+        Os dados são preenchidos novamente, enviando as vezes
+        somente um registro (com todos da tabela) #7
+    """
     page = CreateTodo(context.driver)
 
     for row in context.table:
@@ -28,6 +35,14 @@ def task_register(context):
 @then('a tarefa deve estar na pilha de "{stack}"')
 @then('as tarefas devem estar na pilha de "{stack}"')
 def check_task_on_stack(context, stack):
+    """
+    Checa os registros nas colunas corretas usando a tabela como base.
+
+    #TODO: Os testes que checam os registros inseridos no banco de
+        dados estavam fazendo uma asserção simples.
+        A função foi refatorada mais ainda não exibe os resultados
+        reais nos steps de validação #8
+    """
     todos = Todo(context.driver)
     tasks = todos.get_tasks()
 
