@@ -1,4 +1,4 @@
-from features.helpers.api import clean_test_database
+from features.helpers.api import clean_test_database, create_user
 from ipdb import spost_mortem
 from selenium.webdriver import Firefox
 
@@ -17,6 +17,12 @@ def after_feature(context, feature):
 
 def before_scenario(context, scenario):
     clean_test_database(context.base_url)
+    if 'criar_usuario' in scenario.tags:
+        create_user(
+            context.base_url,
+            {'name': 'test', 'email': 'test@test', 'password': '1234'},
+            [201],
+        )
 
 
 def after_step(context, step):

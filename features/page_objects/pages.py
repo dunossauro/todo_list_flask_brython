@@ -60,10 +60,16 @@ class Login(PageObject):
     email = PageElement(name='email')
     password = PageElement(name='senha')
     submit = PageElement(css='input[value="Login"]')
+    error = PageElement(css='.terminal-alert-error')
 
     def wait_form(self, name='email'):
         WebDriverWait(self.w, 20).until(
             EC.element_to_be_clickable((By.NAME, name))
+        )
+
+    def wait_error_message(self):
+        WebDriverWait(self.w, 20).until(
+            lambda driver: 'terminal-alert-error' in driver.page_source
         )
 
 

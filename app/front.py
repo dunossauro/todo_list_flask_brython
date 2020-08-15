@@ -26,7 +26,7 @@ def login_post():
         login_user(user)
         return redirect('/')
 
-    return redirect(url_for('front.login'))
+    return render_template('login.html', error=True)
 
 
 @front.route('/logout', methods=['POST'])

@@ -7,7 +7,7 @@ from features.page_objects.pages import CreateTodo, Todo
 
 @given('que esteja na página de "{page}"')
 def natigate_to_page(context, page):
-    pages = {'todo': '', 'register': 'register'}
+    pages = {'todo': '', 'register': 'register', 'login': 'login'}
     context.driver.get(context.base_url + pages[page])
 
 

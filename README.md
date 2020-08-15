@@ -21,15 +21,15 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] Criar patch para editar conteúdo dos todos
 
 ## Views
-- [ ] Criar view de login
+- [x] Criar view de login
   - [x] Criar o html
   - [x] Criar eventos de click
-  - [ ] Inserir no template o erro do login
+  - [x] Inserir no template o erro do login
 - [ ] Criar view de cadastro
   - [x] Criar rotas
   - [x] Criar o html
   - [x] Criar eventos de click
-  - [ ] Inserir no template o erro do login
+  - [ ] Inserir no template o erro da criação
 - [x] Ajustar CSS do Header
 - [ ] Ajustar condições do Header
 - [ ] Criar Footer
@@ -46,8 +46,8 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
   - [x] Login
   - [x] Cadastro
   - [x] Todo
-- [ ] Behave features
-  - [ ] Login
+- [x] Behave features
+  - [x] Login
   - [x] Cadastro
   - [x] Todo
 

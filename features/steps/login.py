@@ -1,4 +1,4 @@
-from behave import given
+from behave import given, then, when
 from features.helpers.api import create_user
 from features.page_objects.pages import Login
 
@@ -21,3 +21,21 @@ def default_login(context):
         page.email = test_user['email']
         page.password = test_user['password']
         page.submit.click()
+
+
+@when('logar com credenciais inválidas')
+@when('logar com credenciais válidas')
+def invalid_login(context):
+    page = Login(context.driver)
+    page.wait_form()
+    page.email = 'test@test'
+    page.password = '1234'
+    page.submit.click()
+
+
+@then('a mensagem de erro deverá ser exibida')
+def invalid_login(context):
+    page = Login(context.driver)
+    page.wait_error_message()
+
+    assert page.error.text == context.text
