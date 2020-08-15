@@ -18,7 +18,7 @@ def task_register(context):
     page = CreateTodo(context.driver)
 
     for row in context.table:
-        page.create_todo(row['nome'], row['descrição'], row.get('urgent', ''))
+        page.create_todo(row['nome'], row['descrição'], row.get('urgente', ''))
 
 
 @then('a tarefa deve estar na pilha de "{stack}"')

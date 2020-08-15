@@ -153,6 +153,7 @@ def task_register(evt):
 
     name.value = ''
     desc.value = ''
+    urgent.checked = False
 
     request('/task-register', json=json, bind=register_task)
 
@@ -169,9 +170,12 @@ def request(url, json, bind, method='POST'):
 
 def register_task(req):
     json_response = JSON.parse(req.text)
-    document.select_one('div.todo div.terminal-timeline') <= html_todo(
-        json_response
-    )
+    div = document.select_one('div.todo div.terminal-timeline')
+
+    if json_response['urgent']:
+        div.insertBefore(html_todo(json_response), div.firstChild)
+    else:
+        div <= html_todo(json_response)
 
 
 def get_todos(req):
@@ -179,7 +183,10 @@ def get_todos(req):
     json = JSON.parse(req.text)
     for todo in json:
         div = document.select_one(f'div.{todo["state"]} div.terminal-timeline')
-        div <= todo_states[todo['state']](todo)
+        if todo['urgent']:
+            div.insertBefore(todo_states[todo['state']](todo), div.firstChild)
+        else:
+            div <= todo_states[todo['state']](todo)
 
 
 ajax.get('/tasks', oncomplete=get_todos)
