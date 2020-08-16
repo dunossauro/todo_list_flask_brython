@@ -44,6 +44,7 @@ class CreateTodo(PageObject):
     submit = PageElement(id_='submit')
 
     def create_todo(self, name, description, urgent):
+        self.wait_page_load()
         be_blank(self.w, 'input[name="name"]')
         be_blank(self.w, 'textarea[name="desc"]')
         self.name = name
@@ -53,6 +54,10 @@ class CreateTodo(PageObject):
 
         self.submit.click()
 
+    def wait_page_load(self):
+        WebDriverWait(self.w, 20).until_not(
+            lambda driver: driver.find_element_by_css_selector('#wait')
+        )
 
 class TaskColumn(PageObject):
     def __init__(self, driver):

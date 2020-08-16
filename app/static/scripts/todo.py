@@ -190,3 +190,4 @@ def get_todos(req):
 
 
 ajax.get('/tasks', oncomplete=get_todos)
+document.select_one('#wait').remove()
