@@ -6,8 +6,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 def be_blank(driver, css):
     """Espera elemento estar em branco."""
-    WebDriverWait(driver, 20).until(
-        lambda element: driver.find_element_by_css_selector(css).text == ''
+    WebDriverWait(driver, 20).until_not(
+        lambda w: w.find_element_by_css_selector(css).get_attribute('value')
     )
 
 
