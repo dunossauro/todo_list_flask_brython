@@ -21,8 +21,8 @@ def task_register(context):
         page.create_todo(row['nome'], row['descrição'], row.get('urgente', ''))
 
 
-@then('a tarefa deve estar na pilha de "{stack}"')
-@then('as tarefas devem estar na pilha de "{stack}"')
+@then('a tarefa deve estar na pilha "{stack}"')
+@then('as tarefas devem estar na pilha "{stack}"')
 def check_task_on_stack(context, stack):
     """Checa os registros nas colunas corretas usando a tabela como base."""
     todos = Todo(context.driver)
@@ -38,7 +38,7 @@ def reload_page(context):
     context.driver.refresh()
 
 
-@then('a tarefa deve estar no topo da pilha de "{stack}"')
+@then('a tarefa deve estar no topo da pilha "{stack}"')
 def check_if_todo_is_first(context, stack):
     """
     Compara a primeiro todo da pilha `stack` com o todo da tabela.
