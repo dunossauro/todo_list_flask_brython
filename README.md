@@ -2,7 +2,7 @@
 
 Exemplo de um projeto simples de TODO list usando flask + Brython
 
-A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
+A ideia principal do projeto é ser fullstack python, para fins demonstrativos
 
 
 # Tarefas
@@ -55,6 +55,9 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
 ## Ops
 - [ ] Docker
 - [ ] CI
+  - [x] Code style
+  - [ ] Testes de unidade
+  - [ ] Testes de unidade e2e
 - [ ] CD
 
 ## Outros
