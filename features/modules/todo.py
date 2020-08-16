@@ -10,4 +10,11 @@ def table_to_task(row):
 def check_stack(tasks, table):
     tasks = [task(x.name, x.desc, '') for x in tasks]
 
-    return list(map(lambda task: task in tasks, table))
+    return all(map(lambda task: task in tasks, table))
+
+
+def move_task(po_column, task_name, action: "do|cancel"):
+    selected_task = [
+        task for task in po_column.get_tasks() if task.name == task_name
+    ][0]
+    getattr(selected_task, action)()

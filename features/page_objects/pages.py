@@ -30,6 +30,12 @@ class Task:
         self.desc = self.driver.find_element_by_tag_name('div').text
         self.urgent = ''
 
+    def do(self):
+        self.driver.find_element_by_css_selector('.btn-ghost.do').click()
+
+    def cancel(self):
+        self.driver.find_element_by_css_selector('.btn-ghost.cancel').click()
+
 
 class CreateTodo(PageObject):
     name = PageElement(name='name')
@@ -48,28 +54,27 @@ class CreateTodo(PageObject):
         self.submit.click()
 
 
-class Todo(PageObject):
-    tasks = MultiPageElement(css='.terminal-timeline.todo .terminal-card')
+class TaskColumn(PageObject):
+    def __init__(self, driver):
+        self.tasks = MultiPageElement(css=self.selector)
+        PageObject.__init__(self, driver)
 
-    def get_tasks(self):
-        wait_task(self.w, '.terminal-timeline.todo .terminal-card')
-        return [Task(element) for element in self.tasks]
-
-
-class Doing(PageObject):
-    tasks = MultiPageElement(css='.terminal-timeline.doing .terminal-card')
-
-    def get_tasks(self):
-        wait_task(self.w, '.terminal-timeline.doing .terminal-card')
-        return [Task(element) for element in self.tasks]
+    def get_tasks(self, wait=False):
+        if not wait:
+            wait_task(self.w, self.selector)
+        return [Task(element) for element in self.tasks.find(self.w)]
 
 
-class Done(PageObject):
-    tasks = MultiPageElement(css='.terminal-timeline.done .terminal-card')
+class Todo(TaskColumn):
+    selector = '.terminal-timeline.todo .terminal-card'
 
-    def get_tasks(self):
-        wait_task(self.w, '.terminal-timeline.done .terminal-card')
-        return [Task(element) for element in self.tasks]
+
+class Doing(TaskColumn):
+    selector = '.terminal-timeline.doing .terminal-card'
+
+
+class Done(TaskColumn):
+    selector = '.terminal-timeline.done .terminal-card'
 
 
 class Login(PageObject):
