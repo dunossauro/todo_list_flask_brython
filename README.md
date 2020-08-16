@@ -50,6 +50,7 @@ A ídeia principal do projeto é ser fullstack python, para fins demonstrativos
   - [x] Login
   - [x] Cadastro
   - [x] Todo
+- [x] Movimentação dos cartões
 
 ## Ops
 - [ ] Docker
