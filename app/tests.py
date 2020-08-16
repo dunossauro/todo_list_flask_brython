@@ -7,14 +7,14 @@ from .serializer import UserSchema
 tests = Blueprint('tests', __name__)
 
 
-@tests.route('/remove-users', methods=['GET'])
+@tests.route('/remove-users', methods=['DELETE'])
 def remove_all_users():
     User.query.delete()
     current_app.db.session.commit()
     return 'All users removed', 200
 
 
-@tests.route('/remove-todos', methods=['GET'])
+@tests.route('/remove-todos', methods=['DELETE'])
 def remove_all_tasks():
     Todo.query.delete()
     current_app.db.session.commit()
