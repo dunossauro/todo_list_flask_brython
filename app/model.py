@@ -39,7 +39,7 @@ class Todo(db.Model):
     user = db.relationship('User', backref=db.backref('todo', lazy=True))
 
     def __repr__(self):
-        return f'Todo(name="{self.name}", description="{self.description}", urgent="{self.urgent}", state="{self.state}")'
+        return f'Todo(name="{self.name}", description="{self.description}", urgent="{self.urgent}", state="{self.state}")'  # NOQA
 
 
 def configure(app):
