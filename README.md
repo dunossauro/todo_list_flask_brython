@@ -1,13 +1,18 @@
-# Todo list
+# Full-stack python
 
-Exemplo de um projeto simples de TODO list usando flask + Brython
+Projeto de exemplo usando fullstack python.
 
-A ideia principal do projeto é ser fullstack python, para fins demonstrativos
+O projeto tem a intensão de ser um todo-list integrado a um kanban simples para exercitar as chamadas de ajax.
 
 
-# Tarefas
+O back-end do projeto foi contruído usando flask, um microframework e o front-end foi desenvolvido usando [Brython](http://brython.info).
 
-## Front
+Os testes de unidade foram feitos usando pytest e os testes E2E rodam sob Behave (Behavior-Driven-Development), nos quais foram pensadas as especificações por exemplo, durante as lives no twitch.
+
+
+## Tarefas a serem feitas
+
+### Front
 - [x] Adicionar rota para mudar estado da task (Fazendo)
   - [ ] Mock da query no banco
   - [x] Serializer para receber o request
@@ -17,10 +22,10 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] Criar widget para editar todos quando clicar no todo
 
 
-## API
+### API
 - [ ] Criar patch para editar conteúdo dos todos
 
-## Views
+### Views
 - [x] Criar view de login
   - [x] Criar o html
   - [x] Criar eventos de click
@@ -35,13 +40,13 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] Criar Footer
 
 
-## Login/Admin
+### Login/Admin
 - [x] Criar models de usuários
 - [x] Integração com flask login
 - [ ] Integração com flask admin
 
 
-## Testes de Integração
+### Testes de Integração
 - [x] Page objects
   - [x] Login
   - [x] Cadastro
@@ -52,7 +57,7 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
   - [x] Todo
 - [x] Movimentação dos cartões
 
-## Ops
+### Ops
 - [ ] Docker
 - [ ] CI
   - [x] Code style
@@ -60,13 +65,13 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
   - [ ] Testes E2E
 - [ ] CD - Heroku
 
-## Outros
+### Outros
 - [ ] Gunicorn
 - [ ] Postgres
 - [ ] Compose
 - [ ] Logs
 
 
-## Brython issues
+### Brython issues
 - [ ] Abrir issue no Brython (Não sabe ler url_for do jinja no --modules)
 - [ ] Criar módulos do Brython (para minimizar os js)
