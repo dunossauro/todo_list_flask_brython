@@ -57,13 +57,14 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
 - [ ] CI
   - [x] Code style
   - [ ] Testes de unidade
-  - [ ] Testes de unidade e2e
-- [ ] CD
+  - [ ] Testes E2E
+- [ ] CD - Heroku
 
 ## Outros
 - [ ] Gunicorn
 - [ ] Postgres
 - [ ] Compose
+- [ ] Logs
 
 
 ## Brython issues
