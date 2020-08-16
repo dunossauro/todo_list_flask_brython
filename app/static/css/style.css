@@ -39,4 +39,9 @@
 
 .btn-header {
   border: 0px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+.btn-header:hover {
+  color: var(--font-color);
 }

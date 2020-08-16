@@ -2,21 +2,27 @@
   <div class="container">
     <div class="terminal-nav">
       <div class="terminal-logo">
-        <div class="logo terminal-prompt"><a href="#">Desafio selenium</a></div>
+        <div class="logo terminal-prompt">
+          {% if current_user.is_authenticated %}
+            <a href="#">Olar {{ current_user.name }}!</a>
+          {% else %}
+            <a href="#">Desafio selenium</a>
+          {% endif %}
+        </div>
       </div>
 
       <nav class="terminal-menu">
         <ul>
-          <li><a href="/register">Cadastro</a></li>
-
-          <li><a href="/login">Entrar</a></li>
-
-          <li>
-            <!-- TODO: Adicionar if para sair só quando estiver logado -->
-            <form action="logout" method="post">
-              <input class="btn-header" type="submit" value="Sair"/>
-            </form>
-          </li>
+          {% if current_user.is_authenticated %}
+            <li>
+              <form action="logout" method="post">
+                <input class="btn-header" type="submit" value="#sair"/>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="/register">#cadastro</a></li>
+            <li><a href="/login">#entrar</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>

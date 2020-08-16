@@ -31,7 +31,7 @@ A ideia principal do projeto é ser fullstack python, para fins demonstrativos
   - [x] Criar eventos de click
   - [x] Inserir no template o erro da criação
 - [x] Ajustar CSS do Header
-- [ ] Ajustar condições do Header
+- [x] Ajustar condições do Header
 - [ ] Criar Footer
 
 
