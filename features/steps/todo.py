@@ -2,7 +2,7 @@ from json import loads
 
 from behave import given, then, when
 from features.modules.todo import check_stack, table_to_task, task
-from features.page_objects.pages import CreateTodo, Todo
+from features.page_objects.pages import CreateTodo, Doing, Done, Todo
 
 
 @given('que esteja na página de "{page}"')
@@ -11,8 +11,8 @@ def natigate_to_page(context, page):
     context.driver.get(context.base_url + pages[page])
 
 
-@when('registrar tarefa')
-@when('registrar as tarefas')
+@when('criar tarefa')
+@when('criar as tarefas')
 def task_register(context):
     """Registra uma ou mais tarefas usando a tabela do Gherking."""
     page = CreateTodo(context.driver)
@@ -25,8 +25,13 @@ def task_register(context):
 @then('as tarefas devem estar na pilha "{stack}"')
 def check_task_on_stack(context, stack):
     """Checa os registros nas colunas corretas usando a tabela como base."""
-    todos = Todo(context.driver)
-    tasks = todos.get_tasks()
+    stack = {
+        'A fazer': Todo,
+        'Fazendo': Doing,
+        'Pronto': Done,
+    }[stack]
+    stack_todos = stack(context.driver)
+    tasks = stack_todos.get_tasks()
 
     table = [table_to_task(row) for row in context.table]
 

@@ -1,11 +1,11 @@
 # language: pt
-Funcionalidade: Registrar tarefas
-  Contexto: Login
+Funcionalidade: Criação de tarefas
+  Contexto: Entrar na área logada
     Dado que esteja logado
     E que esteja na página de "todo"
 
-  Cenário: Registrar tarefa
-    Quando registrar tarefa
+  Cenário: Criar tarefa
+    Quando criar tarefa
       | nome   | descrição |
       | Dormir | Pq é bom  |
     Então a tarefa deve estar na pilha "A fazer"
@@ -13,7 +13,7 @@ Funcionalidade: Registrar tarefas
       | Dormir | Pq é bom  |
 
   Cenário: Carregamento automático das TODOS
-    Quando registrar as tarefas
+    Quando criar as tarefas
       | nome           | descrição             | urgente |
       | Liga para Beto | Telefone +15 51515151 | False   |
       | ir no mercado  | Promoção no mercado x | True    |
@@ -27,7 +27,7 @@ Funcionalidade: Registrar tarefas
       | ir no mercado  | Promoção no mercado x |
 
   Cenário: Prioridades de tarefas
-      Quando registrar as tarefas
+      Quando criar as tarefas
         | nome           | descrição               | urgente |
         | Fazer bolo     | não esquecer o fermento | False   |
         | ir no mercado  | Promoção no mercado x   | True    |

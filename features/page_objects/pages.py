@@ -39,7 +39,7 @@ class CreateTodo(PageObject):
 
     def create_todo(self, name, description, urgent):
         be_blank(self.w, 'input[name="name"]')
-        be_blank(self.w, 'input[name="desc"]')
+        be_blank(self.w, 'textarea[name="desc"]')
         self.name = name
         self.description = description
         if urgent:
@@ -53,6 +53,22 @@ class Todo(PageObject):
 
     def get_tasks(self):
         wait_task(self.w, '.terminal-timeline.todo .terminal-card')
+        return [Task(element) for element in self.tasks]
+
+
+class Doing(PageObject):
+    tasks = MultiPageElement(css='.terminal-timeline.doing .terminal-card')
+
+    def get_tasks(self):
+        wait_task(self.w, '.terminal-timeline.doing .terminal-card')
+        return [Task(element) for element in self.tasks]
+
+
+class Done(PageObject):
+    tasks = MultiPageElement(css='.terminal-timeline.done .terminal-card')
+
+    def get_tasks(self):
+        wait_task(self.w, '.terminal-timeline.done .terminal-card')
         return [Task(element) for element in self.tasks]
 
 
