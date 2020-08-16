@@ -44,3 +44,15 @@ Funcionalidade: Movimentação de tarefas
     Então a tarefa não deve estar na pilha "A fazer"
       | nome   | descrição |
       | Dormir | Pq é bom  |
+
+  Cenário: Cartões devem ser carregados nas colunas corretas
+    Quando fazer a tarefa "Dormir"
+    E concluir a tarefa "Dormir"
+    E fazer a tarefa "Acordar"
+    E atualizar a página
+    Então a tarefa deve estar na pilha "Fazendo"
+      | nome    | descrição         |
+      | Acordar | Pois é necessário |
+    E a tarefa deve estar na pilha "Pronto"
+      | nome   | descrição |
+      | Dormir | Pq é bom  |
