@@ -17,10 +17,6 @@
     --input-style: solid;
 }
 
-@media (max-height: 600px) {
-  .result{display: none;}
-}
-
 @media (max-width: 480px) {
   .terminal-menu {
     display: none;
@@ -42,6 +38,7 @@
   color: var(--secondary-color);
   cursor: pointer;
 }
+
 .btn-header:hover {
   color: var(--font-color);
 }
