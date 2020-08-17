@@ -59,6 +59,7 @@ class CreateTodo(PageObject):
             lambda driver: driver.find_element_by_css_selector('#wait')
         )
 
+
 class TaskColumn(PageObject):
     def __init__(self, driver):
         self.tasks = MultiPageElement(css=self.selector)
