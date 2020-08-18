@@ -63,10 +63,10 @@ Os testes de unidade foram feitos usando pytest e os testes E2E rodam sob Behave
   - [x] Code style
   - [ ] Testes de unidade
   - [ ] Testes E2E
-- [ ] CD - Heroku
+- [x] CD - Heroku
 
 ### Outros
-- [ ] Gunicorn
+- [x] Gunicorn
 - [ ] Postgres
 - [ ] Compose
 - [ ] Logs
