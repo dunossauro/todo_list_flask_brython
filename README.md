@@ -1,3 +1,7 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=todo-brython)](http://todo-brython.herokuapp.com/login?next=%2F)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdunossauro%2Ftodo_list_flask_brython%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/dunossauro/todo_list_flask_brython/goto?ref=master)
+
 # Full-stack python
 
 Projeto de exemplo usando fullstack python.
