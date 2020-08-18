@@ -4,7 +4,6 @@ services:
     app:
         build:
             context: .
-            dockerfile: dockerfile-app
         image: todo_list
         environment:
           - FLASK_ENV=production
