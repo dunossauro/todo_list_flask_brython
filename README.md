@@ -7,7 +7,7 @@
 
 Projeto de exemplo usando fullstack python.
 
-O projeto tem a intensão de ser um todo-list integrado a um kanban simples para exercitar as chamadas de ajax.
+O projeto tem a intenção de ser um todo-list integrado a um kanban simples para exercitar as chamadas de ajax.
 
 
 O back-end do projeto foi contruído usando flask, um microframework e o front-end foi desenvolvido usando [Brython](http://brython.info).
