@@ -4,8 +4,10 @@ from os import environ
 class BaseConfig:
     DEBUG = False
     SQLALCHEMY_ECHO = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
-    SECRET_KEY = 'batatinhafritasvoadoras123'
+    SQLALCHEMY_DATABASE_URI = environ.get(
+        'DATABASE_URL', default='sqlite:////tmp/test.db'
+    )
+    SECRET_KEY = environ.get('SECRET', default='batatinhafritasvoadoras123')
 
 
 class Testing(BaseConfig):
