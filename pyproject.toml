@@ -14,6 +14,7 @@ flask-migrate = "^2.5.3"
 brython = "^3.8.9"
 flask-login = "^0.5.0"
 gunicorn = "^20.0.4"
+psycopg2-binary = "^2.8.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0.1"
