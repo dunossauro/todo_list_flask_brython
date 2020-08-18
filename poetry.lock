@@ -1021,9 +1021,9 @@ radon = ">=4,<5"
 requests = ">=2.0,<3.0"
 
 [metadata]
-content-hash = "4eb1f414f45edbf6f93679de325812fd37877b024f1b35e98f57b0b03a224858"
+content-hash = "0e6d287a2666baac7be5080495bfa3742071cfa5f10b2caa30f74e8198171a11"
 lock-version = "1.0"
-python-versions = "^3.8.5"
+python-versions = "3.8.5"
 
 [metadata.files]
 alembic = [
