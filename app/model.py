@@ -8,9 +8,9 @@ db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)
-    name = db.Column(db.String(30), nullable=False)
-    password = db.Column(db.String(30), nullable=False)
-    email = db.Column(db.String(30), nullable=False, unique=True)
+    name = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
 
     def login(self, email, password):
         user = self.query.filter_by(email=email).first()
@@ -31,7 +31,7 @@ class User(UserMixin, db.Model):
 class Todo(db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)
     name = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(300), nullable=False)
     urgent = db.Column(db.Boolean(), nullable=False)
     state = db.Column(db.String(5), nullable=False)
 
