@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: dockerfile-app
+        image: todo_list
+        environment:
+          - FLASK_ENV=production
+          - FLASK_APP=app
+        ports:
+            - 80:80/tcp
+        container_name: todo_list
+        restart: always

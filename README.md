@@ -75,3 +75,34 @@ Os testes de unidade foram feitos usando pytest e os testes E2E rodam sob Behave
 ### Brython issues
 - [ ] Abrir issue no Brython (Não sabe ler url_for do jinja no --modules)
 - [ ] Criar módulos do Brython (para minimizar os js)
+
+
+## Como rodar a aplicação
+
+### Modo de desenvolvimento:
+Antes de tudo é necessário declarar as variavéis de ambiente do Flask
+```
+export FLASK_APP=app
+
+export FLASK_ENV=development
+```
+Agora vamos rodar as migrações do banco
+```
+flask db upgrade
+```
+Então podemos subir a aplicação
+```
+flask run
+```
+
+### Executando o Dockerfile
+```
+docker build -f dockerfile-app . -t todo_list
+
+docker run -it -p 80:80 --name="todo_list" todo_list
+```
+
+### Executando o docker-compose
+```
+docker-compose up --build
+```
