@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>TODO Page</title>
     {% include 'imports.html' %}
+    <script type="text/javascript"
+      src={{url_for('static', filename='js/brython_modules.js')}}>
+    </script>
     <script type="text/python"
       src={{url_for('static', filename='scripts/todo.py')}}>
     </script>
