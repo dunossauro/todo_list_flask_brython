@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  test:
+  analise_statica:
     runs-on: ubuntu-latest
 
     steps:
