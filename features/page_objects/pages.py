@@ -42,6 +42,7 @@ class CreateTodo(PageObject):
     description = PageElement(name='desc')
     urgent = PageElement(name='urgent')
     submit = PageElement(id_='submit')
+    error = PageElement(css='.terminal-alert-error')
 
     def create_todo(self, name, description, urgent):
         self.wait_page_load()
@@ -57,6 +58,11 @@ class CreateTodo(PageObject):
     def wait_page_load(self):
         WebDriverWait(self.w, 20).until_not(
             lambda driver: driver.find_element_by_css_selector('#wait')
+        )
+
+    def wait_error_message(self):
+        WebDriverWait(self.w, 20).until(
+            lambda driver: 'terminal-alert-error' in driver.page_source
         )
 
 

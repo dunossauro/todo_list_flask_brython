@@ -138,11 +138,25 @@ def change_state(task_id, new_state):
     req.send()
 
 
+def error_message(msg: str):
+    has_error = document.select_one('#error')
+    if not has_error:
+        div = html.DIV(
+            msg, Id='error', Class='terminal-alert terminal-alert-error'
+        )
+        fieldset = document.select_one('fieldset')
+        fieldset.insertBefore(div, fieldset.firstChild)
+
+
 @bind('#submit', 'click')
 def task_register(evt):
     name = document.select_one('[name="name"]')
     desc = document.select_one('[name="desc"]')
     urgent = document.select_one('[name="urgent"]')
+
+    if not name.value:
+        error_message('Você esqueceu de preencher o campo "Nome"')
+        return
 
     json = {
         'name': name.value,
@@ -187,6 +201,12 @@ def get_todos(req):
             div.insertBefore(todo_states[todo['state']](todo), div.firstChild)
         else:
             div <= todo_states[todo['state']](todo)
+
+
+@bind('[name="name"]', 'keydown')
+def check_error_message(evt):
+    if (error := document.select_one('#error')) :
+        error.remove()
 
 
 ajax.get('/tasks', oncomplete=get_todos)

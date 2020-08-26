@@ -35,3 +35,10 @@ Funcionalidade: Criação de tarefas
       Então a tarefa deve estar no topo da pilha "A fazer"
         | nome           | descrição             |
         | ir no mercado  | Promoção no mercado x |
+ 
+  Cenário: Não deve ser possível criar uma tarefa com nome vazio
+     Quando criar uma tarefa sem nome
+     Então a mensagem de erro deverá ser exibida
+      """
+      Você esqueceu de preencher o campo "Nome"
+      """

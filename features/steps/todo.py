@@ -86,3 +86,9 @@ def back_task_to_todo(context, task_name):
 @when('cancelar a tarefa "{task_name}"')
 def cancel_task(context, task_name):
     move_task(Todo(context.driver), task_name, action='cancel')
+
+
+@when('criar uma tarefa sem nome')
+def create_wrong_todo(context):
+    context.page = CreateTodo(context.driver)
+    context.page.create_todo('', 'blah', None)
