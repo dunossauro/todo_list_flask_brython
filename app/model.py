@@ -36,7 +36,9 @@ class Todo(db.Model):
     state = db.Column(db.String(5), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    user = db.relationship('User', backref=db.backref('todo', lazy=True))
+    user = db.relationship(
+        'User', backref=db.backref('todo', lazy=True, cascade="all,delete")
+    )
 
     def __repr__(self):
         return f'Todo(name="{self.name}", description="{self.description}", urgent="{self.urgent}", state="{self.state}")'  # NOQA
