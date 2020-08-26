@@ -205,7 +205,7 @@ def get_todos(req):
 
 @bind('[name="name"]', 'keydown')
 def check_error_message(evt):
-    if (error := document.select_one('#error')) :
+    if (error := document.select_one('#error')):
         error.remove()
 
 
