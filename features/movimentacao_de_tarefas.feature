@@ -44,6 +44,10 @@ Funcionalidade: Movimentação de tarefas
     Então a tarefa não deve estar na pilha "A fazer"
       | nome   | descrição |
       | Dormir | Pq é bom  |
+    Quando atualizar a página
+    Então a tarefa não deve estar na pilha "A fazer"
+      | nome   | descrição |
+      | Dormir | Pq é bom  |
 
   Cenário: Cartões devem ser carregados nas colunas corretas
     Quando fazer a tarefa "Dormir"
