@@ -93,7 +93,7 @@ def assert_that_first_todo_task_contains_urgency_indicator(context):
     first_task = Todo(context.driver).get_tasks()[0]
     assert (
         first_task.urgent
-    ), f'Indicativo de tarefa importante não exibido para "{first_task.name}"'
+    ), f"Esperado que a task {first_task.name} tivesse marcador de urgência."
 
 
 @then(
@@ -102,5 +102,5 @@ def assert_that_first_todo_task_contains_urgency_indicator(context):
 def assert_that_first_todo_task_does_not_contains_urgency_indicator(context):
     first_task = Todo(context.driver).get_tasks()[0]
     assert (
-        not first_task.urgent
-    ), f'Indicativo de tarefa importante não exibido para "{first_task.name}"'
+        first_task.urgent
+    ), f"Esperado que a task {first_task.name} não tivesse marcador de urgência."
