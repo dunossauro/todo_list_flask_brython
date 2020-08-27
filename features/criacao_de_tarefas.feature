@@ -36,6 +36,13 @@ Funcionalidade: Criação de tarefas
         | nome           | descrição             |
         | ir no mercado  | Promoção no mercado x |
 
+  Cenário: Não deve ser possível criar uma tarefa com nome vazio
+     Quando criar uma tarefa sem nome
+     Então a mensagem de erro deverá ser exibida
+      """
+      Você esqueceu de preencher o campo "Nome"
+      """
+
   Cenário: Tarefa urgente deve exibir indicador de urgência
     Quando criar tarefa
       | nome       | descrição               | urgente |
