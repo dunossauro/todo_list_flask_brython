@@ -28,7 +28,7 @@ class Task:
         self.id = header[1]
         self.name = header[0].strip()
         self.desc = self.driver.find_element_by_tag_name('div').text
-        self.urgent = ''
+        self.urgent = bool(self.driver.get_attribute('data-urgent-task')) or False
 
     def do(self):
         self.driver.find_element_by_css_selector('.btn-ghost.do').click()
@@ -50,7 +50,8 @@ class CreateTodo(PageObject):
         be_blank(self.w, 'textarea[name="desc"]')
         self.name = name
         self.description = description
-        if urgent:
+
+        if urgent == 'True':
             self.urgent.click()
 
         self.submit.click()

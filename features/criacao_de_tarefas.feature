@@ -35,10 +35,15 @@ Funcionalidade: Criação de tarefas
       Então a tarefa deve estar no topo da pilha "A fazer"
         | nome           | descrição             |
         | ir no mercado  | Promoção no mercado x |
- 
-  Cenário: Não deve ser possível criar uma tarefa com nome vazio
-     Quando criar uma tarefa sem nome
-     Então a mensagem de erro deverá ser exibida
-      """
-      Você esqueceu de preencher o campo "Nome"
-      """
+
+  Cenário: Tarefa urgente deve exibir indicador de urgência
+    Quando criar tarefa
+      | nome       | descrição               | urgente |
+      | Fazer bolo | não esquecer o fermento | True    |
+    Então a tarefa no topo da pilha "A fazer" deverá ter indicativo de urgência
+
+  Cenário: Tarefa sem urgência não deve exibir indicador de urgência
+    Quando criar tarefa
+      | nome       | descrição               | urgente |
+      | Fazer bolo | não esquecer o fermento | False   |
+    Então a tarefa no topo da pilha "A fazer" não deverá ter indicativo de urgência
