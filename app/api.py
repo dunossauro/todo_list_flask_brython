@@ -2,7 +2,7 @@ from flask import Blueprint, current_app, jsonify, request
 from flask_login import current_user
 from marshmallow import ValidationError
 
-from .model import Todo
+from .model import Todo, User
 from .serializer import TodoSchema
 
 api = Blueprint('api', __name__)
@@ -15,6 +15,21 @@ def tasks():
         Todo.state != 'canceled', Todo.user == current_user
     ).all()
     return jsonify(ts.dump(query_result)), 200
+
+
+@api.route('/tasks', methods=['POST'])
+def create_task():
+    ts = TodoSchema()
+    try:
+        task = ts.load(request.json)
+        if not User.query.filter(User.id == task.user_id).first():
+            return {'user_id': ['User does not exists']}, 400
+        current_app.db.session.add(task)
+        current_app.db.session.commit()
+        return ts.dump(task), 201
+    except ValidationError as err:
+        return jsonify(err.messages), 400
+
 
 
 @api.route('/change-state/<int:_id>/<new_state>', methods=['PATCH'])

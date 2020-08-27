@@ -8,21 +8,24 @@ def before_all(context):
 
 
 def before_feature(context, feature):
-    context.driver = Firefox()
+    if 'api' not in feature.tags:
+        context.driver = Firefox()
 
 
 def after_feature(context, feature):
-    context.driver.quit()
+    if 'api' not in feature.tags:
+        context.driver.quit()
 
 
 def before_scenario(context, scenario):
-    clean_test_database(context.base_url)
-    if 'criar_usuario' in scenario.tags:
-        create_user(
-            context.base_url,
-            {'name': 'test', 'email': 'test@test', 'password': '1234'},
-            [201],
-        )
+    if 'api' not in scenario.feature.tags:
+        clean_test_database(context.base_url)
+        if 'criar_usuario' in scenario.tags:
+            create_user(
+                context.base_url,
+                {'name': 'test', 'email': 'test@test', 'password': '1234'},
+                [201],
+            )
 
 
 def after_step(context, step):
