@@ -28,7 +28,7 @@ class Task:
         self.id = header[1]
         self.name = header[0].strip()
         self.desc = self.driver.find_element_by_tag_name('div').text
-        self.urgent = bool(self.driver.get_attribute('data-urgent-task')) or False
+        self.urgent = bool(self.driver.get_attribute('data-urgent-task'))
 
     def do(self):
         self.driver.find_element_by_css_selector('.btn-ghost.do').click()
