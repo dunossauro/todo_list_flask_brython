@@ -93,10 +93,9 @@ def html_card(todo, do_action, cancel_action=None):
     Note:
         *_acions = Dict[str, Union[str, Callable]]
     """
-    div = html.DIV(**{
-        "class": "terminal-card",
-        "data-urgent-task": todo["urgent"]
-    })
+    div = html.DIV(
+        **{"class": "terminal-card", "data-urgent-task": todo["urgent"]}
+    )
     div <= html.HEADER(f'{todo["name"]} #{todo["id"]}')
     div <= html.DIV(f'{todo["description"]}')
     buts = html.DIV(Class='buttons')
@@ -208,7 +207,7 @@ def get_todos(req):
 
 @bind('[name="name"]', 'keydown')
 def check_error_message(evt):
-    if (error := document.select_one('#error')):
+    if (error := document.select_one('#error')) :
         error.remove()
 
 
