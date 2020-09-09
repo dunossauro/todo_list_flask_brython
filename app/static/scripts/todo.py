@@ -93,7 +93,10 @@ def html_card(todo, do_action, cancel_action=None):
     Note:
         *_acions = Dict[str, Union[str, Callable]]
     """
-    div = html.DIV(Class='terminal-card')
+    div = html.DIV(**{
+        "class": "terminal-card",
+        "data-urgent-task": todo["urgent"]
+    })
     div <= html.HEADER(f'{todo["name"]} #{todo["id"]}')
     div <= html.DIV(f'{todo["description"]}')
     buts = html.DIV(Class='buttons')

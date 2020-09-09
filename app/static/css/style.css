@@ -3,7 +3,6 @@
     --global-line-height: 1.4em;
     --background-color: #222225;
     --font-color: #e8e9ed;
-    --invert-font-color: #222225
     --invert-font-color: #222225;
     --primary-color: #62c4ff;
     --secondary-color: #a3abba;
@@ -41,4 +40,9 @@
 
 .btn-header:hover {
   color: var(--font-color);
+}
+
+.terminal-card[data-urgent-task="true"]::before {
+    background: var(--error-color);
+    border-color: var(--error-color);
 }
