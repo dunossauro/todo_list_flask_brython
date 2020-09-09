@@ -20,7 +20,9 @@ def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(
     assert request.status_code == 201
 
 
-def test_task_register_com_json_vazio_deve_retonar_os_campos_faltantes(client,):
+def test_task_register_com_json_vazio_deve_retonar_os_campos_faltantes(
+    client,
+):
     data = {}
     expected_keys = ['name', 'description', 'state', 'urgent']
 
