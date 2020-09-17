@@ -4,7 +4,7 @@ from flask import url_for
 
 
 def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(
-    client, mocker
+    client
 ):
     data = {
         'name': 'Dormir',
@@ -13,7 +13,6 @@ def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(
         'urgent': False,
     }
 
-    mocker.patch('app.api.current_app.db')
     request = client.post(url_for('api.task_register'), json=data)
 
     assert request.json == data

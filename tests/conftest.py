@@ -40,12 +40,19 @@ class TodoFactory(Factory):
 @fixture
 def client():
     app = create_app()
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app_context = app.test_request_context()
     app_context.push()
     client = app.test_client()
+    app.db.create_all()
     yield client
     app_context.pop()
 
+@fixture
+def app():
+    app = create_app()
+    return app
 
 @fixture(scope='function')
 def tasks():

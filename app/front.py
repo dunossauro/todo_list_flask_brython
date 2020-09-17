@@ -43,10 +43,11 @@ def register():
 @front.route('/register', methods=['POST'])
 def register_post():
     user = User().register(
-        request.form.get('nome', ''),
-        request.form.get('email', ''),
-        request.form.get('senha', ''),
+        request.form.get('nome'),
+        request.form.get('email'),
+        request.form.get('senha'),
     )
+
     if user:
         login_user(user)
         return redirect('/')
