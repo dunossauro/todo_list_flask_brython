@@ -49,6 +49,7 @@ Funcionalidade: Movimentação de tarefas
       | nome   | descrição |
       | Dormir | Pq é bom  |
 
+
   Cenário: Cartões devem ser carregados nas colunas corretas
     Quando fazer a tarefa "Dormir"
     E concluir a tarefa "Dormir"

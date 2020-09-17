@@ -134,10 +134,13 @@ html_done = partial(html_card, do_action={'text': 'Refazer!', 'action': redo})
 
 
 def change_state(task_id, new_state):
+    json = {'state': new_state}
+
     req = ajax.Ajax()
-    req.open('PATCH', f'/change-state/{task_id}/{new_state}', True)
+    req.open('PATCH', f'/tasks/{task_id}', True)
     req.set_header('content-type', 'application/json')
-    req.send()
+    req.send(JSON.stringify(json))
+    return req
 
 
 def error_message(msg: str):
@@ -171,7 +174,7 @@ def task_register(evt):
     desc.value = ''
     urgent.checked = False
 
-    request('/task-register', json=json, bind=register_task)
+    request('/tasks', json=json, bind=register_task)
 
 
 def request(url, json, bind, method='POST'):

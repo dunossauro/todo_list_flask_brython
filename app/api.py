@@ -17,21 +17,7 @@ def tasks():
     return jsonify(ts.dump(query_result)), 200
 
 
-@api.route('/change-state/<int:_id>/<new_state>', methods=['PATCH'])
-def change_task_state(_id, new_state):
-    ts = TodoSchema()
-    states = ['todo', 'doing', 'done', 'canceled']
-
-    task = Todo.query.filter_by(id=_id).one()
-
-    if new_state in states:
-        task.state = new_state
-        current_app.db.session.commit()
-
-    return jsonify(ts.dump(task))
-
-
-@api.route('/task-register', methods=['POST'])
+@api.route('/tasks', methods=['POST'])
 def task_register():
     ts = TodoSchema()
     try:
@@ -41,3 +27,20 @@ def task_register():
         return ts.dump(task), 201
     except ValidationError as err:
         return jsonify(err.messages), 400
+
+
+@api.route('/tasks/<int:_id>/', methods=['PATCH'])
+def change_task_state(_id):
+    ts = TodoSchema()
+
+    new_state = request.json.get('state')
+
+    states = ['todo', 'doing', 'done', 'canceled']
+
+    task = Todo.query.filter_by(id=_id).one()
+
+    if new_state in states:
+        task.state = new_state
+        current_app.db.session.commit()
+
+    return jsonify(ts.dump(task))
