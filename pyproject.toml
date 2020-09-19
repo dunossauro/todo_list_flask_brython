@@ -31,6 +31,7 @@ httpx = "^0.14.1"
 black = "^19.10b0"
 xenon = "^0.7.0"
 pylint = "^2.6.0"
+pytest-cov = "^2.10.1"
 
 [build-system]
 requires = ["poetry>=0.12"]

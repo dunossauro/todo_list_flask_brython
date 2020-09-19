@@ -64,8 +64,6 @@ docker run -it -p 80:80 --name="todo_list" todo_list
 docker-compose up --build
 ```
 
---------------
-
 # Rodando os testes de unidade
 
 Caso tenha interesse em rodar os testes de unidade, você deve se certificar que está com as variáveis de ambiente do flask configuradas.
@@ -73,3 +71,16 @@ Caso tenha interesse em rodar os testes de unidade, você deve se certificar que
 ```bash
 python -m pytest  # Ou somente pytest, após um `pip install -e.`
 ```
+
+Caso você queira ver a cobertura dos testes
+```bash
+coverage --source app -m pytest
+```
+
+Ver o report de cobertura
+
+```bash
+coverage html
+```
+
+Os arquivos serão gerados na pasta 'htmlcov'. Você pode abrir o `index.html` no seu browser de preferência e explorar o que não está coberto.
