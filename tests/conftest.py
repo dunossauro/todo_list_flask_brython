@@ -49,10 +49,12 @@ def client():
     yield client
     app_context.pop()
 
+
 @fixture
 def app():
     app = create_app()
     return app
+
 
 @fixture(scope='function')
 def tasks():
