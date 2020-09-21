@@ -137,7 +137,7 @@ def change_state(task_id, new_state):
     json = {'state': new_state}
 
     req = ajax.Ajax()
-    req.open('PATCH', f'/tasks/{task_id}', True)
+    req.open('PATCH', f'/tasks/{task_id}/', True)
     req.set_header('content-type', 'application/json')
     req.send(JSON.stringify(json))
     return req
