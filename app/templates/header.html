@@ -16,12 +16,12 @@
           {% if current_user.is_authenticated %}
             <li>
               <form action="logout" method="post">
-                <input class="btn-header" type="submit" value="#sair"/>
+                <input class="btn-header" type="submit" value="# sair"/>
               </form>
             </li>
           {% else %}
-            <li><a href="/register">#cadastro</a></li>
-            <li><a href="/login">#entrar</a></li>
+            <li><a href="/register"># cadastro</a></li>
+            <li><a href="/login"># entrar</a></li>
           {% endif %}
         </ul>
       </nav>
