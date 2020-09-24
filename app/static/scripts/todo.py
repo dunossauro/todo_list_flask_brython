@@ -184,8 +184,8 @@ def task_register(evt):
     name.value = ''
     desc.value = ''
     urgent.checked = False
-    counter_name.text = 0
-    counter_desc.text = 0
+    counter_name.text = "0"
+    counter_desc.text = "0"
 
     request('/tasks', json=json, bind=register_task)
 
