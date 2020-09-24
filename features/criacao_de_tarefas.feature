@@ -54,3 +54,17 @@ Funcionalidade: Criação de tarefas
       | nome       | descrição               | urgente |
       | Fazer bolo | não esquecer o fermento | False   |
     Então a tarefa no topo da pilha "A fazer" não deverá ter indicativo de urgência
+
+  Cenário: Não deve ser possível criar uma tarefa com mais de 80 caracteres no campo nome
+    Quando criar tarefa com 81 ou mais caracteres no campo nome
+    Então a mensagem de aviso deverá ser exibida
+      """
+      Ei, o campo "Nome" da sua tarefa está muito grande, o limite é 80 caracteres
+      """
+
+  Cenário: Não deve ser possível criar uma tarefa com mais de 300 caracteres na descrição
+    Quando criar tarefa com 301 ou mais caracteres no campo descrição
+    Então a mensagem de aviso deverá ser exibida
+      """
+      Ei, o campo "Descrição" da sua tarefa está muito grande, o limite é 300 caracteres
+      """

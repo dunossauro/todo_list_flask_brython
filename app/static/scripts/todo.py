@@ -158,9 +158,20 @@ def task_register(evt):
     name = document.select_one('[name="name"]')
     desc = document.select_one('[name="desc"]')
     urgent = document.select_one('[name="urgent"]')
+    counter_name = document.select_one('#name-current')
+    counter_desc = document.select_one('#desc-current')
+
 
     if not name.value:
         error_message('Você esqueceu de preencher o campo "Nome"')
+        return
+
+    elif len(name.value) > 80:
+        error_message('Ei, o campo "Nome" da sua tarefa está muito grande, o limite é 80 caracteres')
+        return
+
+    elif len(desc.value) > 300:
+        error_message('Ei, o campo "Descrição" da sua tarefa está muito grande, o limite é 300 caracteres')
         return
 
     json = {
@@ -173,6 +184,8 @@ def task_register(evt):
     name.value = ''
     desc.value = ''
     urgent.checked = False
+    counter_name.text = 0
+    counter_desc.text = 0
 
     request('/tasks', json=json, bind=register_task)
 
@@ -212,6 +225,20 @@ def get_todos(req):
 def check_error_message(evt):
     if (error := document.select_one('#error')) :
         error.remove()
+
+@bind('[name="name"]', 'input')
+def description_char_counter(evt):
+    document.select_one('#name-current').text = str(
+    len(document.select_one('[name="name"]').value))
+
+    check_error_message(evt)
+
+@bind('[name="desc"]', 'input')
+def description_char_counter(evt):
+    document.select_one('#desc-current').text = str(
+    len(document.select_one('[name="desc"]').value))
+
+    check_error_message(evt)
 
 
 ajax.get('/tasks', oncomplete=get_todos)
