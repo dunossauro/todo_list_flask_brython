@@ -8,10 +8,18 @@
       <div class="form-group">
         <label for="name">Nome da tarefa:</label>
         <input type="text" name="name" value="" autocomplete="off" /required>
+        <div id="name-counter">
+          <span id = "name-current">0 </span>
+          <span>/ 80 </span>
+        </div>
       </div>
       <div class="form-group">
         <label for="desc">Descrição da tarefa:</label>
         <textarea name="desc" rows="8" cols="20" autocomplete="off" /required></textarea>
+        <div id="desc-counter">
+          <span id = "desc-current">0 </span>
+          <span>/ 300 </span>
+        </div>
       </div>
       <div class="form-group">
         <label for="urgent">Tarefa urgente:</label>

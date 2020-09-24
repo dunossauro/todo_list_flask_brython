@@ -46,3 +46,16 @@
     background: var(--error-color);
     border-color: var(--error-color);
 }
+
+/* Style of todo description character counter |
+ Estilo do contador de caracteres da descrição */
+#desc-counter {
+    float: right;
+}
+
+/* Style of todo name character counter |
+ Estilo do contador de caracteres do nome */
+#name-counter{
+  float: right;
+  padding-top: 0.1em;
+}
