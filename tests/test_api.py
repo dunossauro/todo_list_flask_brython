@@ -2,8 +2,11 @@ from jsonschema import validate
 
 from flask import url_for
 
+from .conftest import login
+
 
 def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(client):
+    login(client)
     data = {
         'name': 'Dormir',
         'description': 'Pq é bom',
@@ -12,6 +15,8 @@ def test_task_register_com_json_valido_deve_retonar_o_objeto_recebido(client):
     }
 
     request = client.post(url_for('api.task_register'), json=data)
+
+    del request.json['id']
 
     assert request.json == data
     assert request.status_code == 201
@@ -39,12 +44,9 @@ def test_tasks_deve_retornar_um_grupo_de_tasks_validas(
     assert validate(response.json, schema=task_schema) is None
 
 
-# def test_change_task_state_deve_retornar_a_task_com_estado_alterado(
-#     client, mocker, filtered_tasks
-# ):
-#     m = mocker.patch('app.api.Todo')
-#     m.query.filter_by.first.return_value = filtered_tasks
-#     data = ...
+# def test_change_task_state_deve_retornar_a_task_com_estado_alterado(client):
+#     login(client)
+#
 #     response = client.patch(
 #         url_for('api.change_task_state', json=data)
 #     )

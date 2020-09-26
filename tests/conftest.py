@@ -2,7 +2,7 @@ from random import choice
 
 from factory import Factory, Faker, Sequence
 from faker.providers import BaseProvider
-from flask import template_rendered
+from flask import template_rendered, url_for
 from pytest import fixture
 
 from app import create_app
@@ -37,6 +37,14 @@ class TodoFactory(Factory):
     description = Faker('sentence', nb_words=4)
     urgent = Faker('boolean')
     state = Faker('todo_state')
+
+
+def login(client, email='test@test', senha='test'):
+    return client.post(
+        url_for('front.login'),
+        data=dict(email=email, senha=senha),
+        follow_redirects=True,
+    )
 
 
 @fixture
