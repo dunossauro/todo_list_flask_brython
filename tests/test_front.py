@@ -1,12 +1,5 @@
 from flask import url_for
-
-
-def login(client, email='test@test', senha='test'):
-    return client.post(
-        url_for('front.login'),
-        data=dict(email=email, senha=senha),
-        follow_redirects=True,
-    )
+from .conftest import login
 
 
 def test_todo_deve_renderizar_a_view_de_login_quando_nao_estiver_logado(
