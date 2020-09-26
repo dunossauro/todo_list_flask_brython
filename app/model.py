@@ -33,7 +33,7 @@ class Todo(db.Model):
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(300), nullable=False)
     urgent = db.Column(db.Boolean(), nullable=False)
-    state = db.Column(db.String(5), nullable=False)
+    state = db.Column(db.String(15), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship(
