@@ -112,6 +112,14 @@ typed-ast = ">=1.4.0"
 d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
 [[package]]
+category = "dev"
+description = "Fast, simple object-to-object and broadcast signaling"
+name = "blinker"
+optional = false
+python-versions = "*"
+version = "1.4"
+
+[[package]]
 category = "main"
 description = "Brython is an implementation of Python 3 running in the browser"
 name = "brython"
@@ -1112,7 +1120,7 @@ radon = ">=4,<5"
 requests = ">=2.0,<3.0"
 
 [metadata]
-content-hash = "51b40dc5ae7ca6564e3fa054279071b8af510feba342a63b95bfeec68a866e59"
+content-hash = "a841b98fb30da84d70f217ef1e649ece8b273ebac8b02f6a679bb327d59b5da7"
 lock-version = "1.0"
 python-versions = "3.8.5"
 
@@ -1151,6 +1159,9 @@ behave = [
 black = [
     {file = "black-19.10b0-py36-none-any.whl", hash = "sha256:1b30e59be925fafc1ee4565e5e08abef6b03fe455102883820fe5ee2e4734e0b"},
     {file = "black-19.10b0.tar.gz", hash = "sha256:c2edb73a08e9e0e6f65a0e6af18b059b8b1cdd5bef997d7a0b181df93dc81539"},
+]
+blinker = [
+    {file = "blinker-1.4.tar.gz", hash = "sha256:471aee25f3992bd325afa3772f1063dbdbbca947a041b8b89466dc00d606f8b6"},
 ]
 brython = [
     {file = "brython-3.8.9-py3.8.egg", hash = "sha256:cbf5899f1fac5b3c008a173b7cc5dc98533a4f634c5bfd54686e587fb1c9d557"},
