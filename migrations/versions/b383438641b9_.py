@@ -18,16 +18,19 @@ depends_on = None
 
 def upgrade():
     with op.batch_alter_table('todo', schema=None) as batch_op:
-        batch_op.alter_column('state',
-                   existing_type=sa.VARCHAR(length=5),
-                   type_=sa.String(length=15),
-                   existing_nullable=False)
-
+        batch_op.alter_column(
+            'state',
+            existing_type=sa.VARCHAR(length=5),
+            type_=sa.String(length=15),
+            existing_nullable=False,
+        )
 
 
 def downgrade():
     with op.batch_alter_table('todo', schema=None) as batch_op:
-        batch_op.alter_column( 'state',
-                   existing_type=sa.String(length=15),
-                   type_=sa.VARCHAR(length=5),
-                   existing_nullable=False)
+        batch_op.alter_column(
+            'state',
+            existing_type=sa.String(length=15),
+            type_=sa.VARCHAR(length=5),
+            existing_nullable=False,
+        )
