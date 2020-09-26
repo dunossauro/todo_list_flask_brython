@@ -1,10 +1,12 @@
 from random import choice
 
-from app import create_app
-from app.model import Todo
 from factory import Factory, Faker, Sequence
 from faker.providers import BaseProvider
+from flask import template_rendered
 from pytest import fixture
+
+from app import create_app
+from app.model import Todo, User
 
 
 class TaksProvider(BaseProvider):
@@ -38,22 +40,48 @@ class TodoFactory(Factory):
 
 
 @fixture
-def client():
-    app = create_app()
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app_context = app.test_request_context()
-    app_context.push()
-    client = app.test_client()
-    app.db.create_all()
-    yield client
-    app_context.pop()
+def db(app):
+    with app.app_context():
+        app.db.create_all()
+
+        yield app.db
+
+        app.db.session.remove()
+        app.db.drop_all()
+
+
+@fixture
+def client(app, db):
+    with app.test_client() as client:
+        app.db.session.add(
+            User(name='test', password='test', email='test@test')
+        )
+        yield client
 
 
 @fixture
 def app():
     app = create_app()
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app_context = app.test_request_context()
+    app_context.push()
+
     return app
+
+
+@fixture
+def templates(app):
+    recorded = []
+
+    def record(sender, template, context, **extra):
+        recorded.append(template)
+
+    template_rendered.connect(record, app)
+
+    yield recorded
+
+    template_rendered.disconnect(record, app)
 
 
 @fixture(scope='function')
