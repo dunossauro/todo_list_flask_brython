@@ -10,7 +10,7 @@ Projeto de exemplo usando fullstack python.
 O projeto tem a intenção de ser um todo-list integrado a um kanban simples para exercitar as chamadas de ajax.
 
 
-O back-end do projeto foi construído usando [Flask](https://flask.palletsprojects.com/), um microframework e o front-end foi desenvolvido usando [Brython](http://brython.info) e [terminal css](terminalcss.xyz/).
+O back-end do projeto foi construído usando [Flask](https://flask.palletsprojects.com/), um microframework e o front-end foi desenvolvido usando [Brython](http://brython.info) e [terminal css](https://terminalcss.xyz).
 
 
 Os testes de unidade foram feitos usando pytest e os testes E2E rodam sob Behave (Behavior-Driven-Development), nos quais foram pensadas as especificações por exemplo, durante as lives no [twitch](https://www.twitch.tv/livedepython).
