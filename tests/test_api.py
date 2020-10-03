@@ -30,7 +30,7 @@ def test_task_register_com_json_vazio_deve_retonar_os_campos_faltantes(
 
     request = client.post(url_for('api.task_register'), json=data)
 
-    assert request.status_code == 400
+    assert request.status_code == 200
     assert all(map(lambda field: field in request.json.keys(), expected_keys))
 
 
