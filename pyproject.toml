@@ -34,6 +34,9 @@ pylint = "^2.6.0"
 pytest-cov = "^2.10.1"
 blinker = "^1.4"
 
+[tool.black]
+line-length = 79
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
