@@ -18,6 +18,16 @@ def wait_task(driver, css):
     )
 
 
+class WaitablePageObject(PageObject):
+
+    """Aguarda pela mensagem de erro"""
+
+    def wait_error_message(self):
+        WebDriverWait(self.w, 20).until(
+            lambda driver: 'terminal-alert-error' in driver.page_source
+        )
+
+
 class Task:
     def __init__(self, driver):
         self.driver = driver
