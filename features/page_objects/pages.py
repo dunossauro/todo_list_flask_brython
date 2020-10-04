@@ -47,7 +47,7 @@ class Task:
         self.driver.find_element_by_css_selector('.btn-ghost.cancel').click()
 
 
-class CreateTodo(PageObject):
+class CreateTodo(WaitablePageObject):
     name = PageElement(name='name')
     description = PageElement(name='desc')
     urgent = PageElement(name='urgent')
@@ -70,7 +70,6 @@ class CreateTodo(PageObject):
         WebDriverWait(self.w, 20).until_not(
             lambda driver: driver.find_element_by_css_selector('#wait')
         )
-
 
 
 class TaskColumn(PageObject):
@@ -96,7 +95,7 @@ class Done(TaskColumn):
     selector = '.terminal-timeline.done .terminal-card'
 
 
-class Login(PageObject):
+class Login(WaitablePageObject):
     email = PageElement(name='email')
     password = PageElement(name='senha')
     submit = PageElement(css='input[value="Login"]')
@@ -108,7 +107,7 @@ class Login(PageObject):
         )
 
 
-class CreateUser(PageObject):
+class CreateUser(WaitablePageObject):
     name = PageElement(name='nome')
     email = PageElement(name='email')
     email_label = PageElement(css='.form-group:nth-child(2) > label')
