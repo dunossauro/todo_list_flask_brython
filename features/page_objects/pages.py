@@ -71,10 +71,6 @@ class CreateTodo(PageObject):
             lambda driver: driver.find_element_by_css_selector('#wait')
         )
 
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
-        )
 
 
 class TaskColumn(PageObject):
@@ -111,11 +107,6 @@ class Login(PageObject):
             EC.element_to_be_clickable((By.NAME, name))
         )
 
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
-        )
-
 
 class CreateUser(PageObject):
     name = PageElement(name='nome')
@@ -130,8 +121,3 @@ class CreateUser(PageObject):
         self.email = email
         self.password = senha
         self.submit.click()
-
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
-        )
