@@ -39,7 +39,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Black
-        run: poetry run black -S -l 79 . --check
+        run: poetry run black -S . --check
 
       - name: Xenon
         run: xenon --max-absolute A --max-modules A --max-average A .
