@@ -18,6 +18,16 @@ def wait_task(driver, css):
     )
 
 
+class WaitablePageObject(PageObject):
+
+    """Aguarda pela mensagem de erro"""
+
+    def wait_error_message(self):
+        WebDriverWait(self.w, 20).until(
+            lambda driver: 'terminal-alert-error' in driver.page_source
+        )
+
+
 class Task:
     def __init__(self, driver):
         self.driver = driver
@@ -37,7 +47,7 @@ class Task:
         self.driver.find_element_by_css_selector('.btn-ghost.cancel').click()
 
 
-class CreateTodo(PageObject):
+class CreateTodo(WaitablePageObject):
     name = PageElement(name='name')
     description = PageElement(name='desc')
     urgent = PageElement(name='urgent')
@@ -59,11 +69,6 @@ class CreateTodo(PageObject):
     def wait_page_load(self):
         WebDriverWait(self.w, 20).until_not(
             lambda driver: driver.find_element_by_css_selector('#wait')
-        )
-
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
         )
 
 
@@ -90,7 +95,7 @@ class Done(TaskColumn):
     selector = '.terminal-timeline.done .terminal-card'
 
 
-class Login(PageObject):
+class Login(WaitablePageObject):
     email = PageElement(name='email')
     password = PageElement(name='senha')
     submit = PageElement(css='input[value="Login"]')
@@ -101,13 +106,8 @@ class Login(PageObject):
             EC.element_to_be_clickable((By.NAME, name))
         )
 
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
-        )
 
-
-class CreateUser(PageObject):
+class CreateUser(WaitablePageObject):
     name = PageElement(name='nome')
     email = PageElement(name='email')
     email_label = PageElement(css='.form-group:nth-child(2) > label')
@@ -120,8 +120,3 @@ class CreateUser(PageObject):
         self.email = email
         self.password = senha
         self.submit.click()
-
-    def wait_error_message(self):
-        WebDriverWait(self.w, 20).until(
-            lambda driver: 'terminal-alert-error' in driver.page_source
-        )
