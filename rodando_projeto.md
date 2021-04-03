@@ -2,6 +2,7 @@
 
 O projeto todo foi concebido usando python 3.8.5. O projeto deve funcionar para qualquer versão do python 3.8, porém algumas features pode não funcionar corretamente com versões menores ou maiores. Você pode usar o pyenv para gerenciar as instalações de versões do python. Se você já usa pyenv, temos um arquivo `.python-version` no projeto e isso não deve ser um problema para você.
 
+> Projeto atualizado para 3.9.2 (02/04/2021)
 
 ## Configurando o poetry
 
