@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: "CI"
+    branches: master
+    types: completed
+
+jobs:
+
+  deploy_app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy no Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "todo-list-live-de-python"
+          heroku_email: "williangldzn@gmail.com"
