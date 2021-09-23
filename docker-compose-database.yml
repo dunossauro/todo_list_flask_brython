@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    database:
+        container_name: postgres-database
+        hostname: postgres-database
+        image: postgres:12.1
+        restart: always
+        environment:
+            POSTGRES_USER: user_root
+            POSTGRES_PASSWORD: user_pass_123
+            POSTGRES_DB: todolist_db
+            TZ: GMT-3
+        ports:
+            - "5432:5432"
+        volumes:
+            - db-data-todolist_db:/var/lib/postgresql/data
+    
+volumes:
+    db-data-todolist_db:

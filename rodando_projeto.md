@@ -27,7 +27,19 @@ Caso você deseje rodar os testes de comportamento, eles fazem uso de rotas excl
 export FLASK_APP=app
 
 export FLASK_ENV=development
+
 ```
+
+Caso queira rodar os ambientes de desenvolvimento e testes com banco de dados PostgreSQL execute:
+
+```bash
+docker-compose -f docker-compose-database.yml up -d
+
+export DATABASE_URL=postgresql://user_root:user_pass_123@localhost/todolist_db
+
+```
+
+(credenciais de acesso ao banco contidas no arquivo `docker-compose-database.yml`)
 
 Lembrando que é importante que você rode as migrações para que o banco esteja configurado.
 
